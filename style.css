@@ -1,0 +1,84 @@
+/*
+Theme Name:         KSAS Academic Department: GRLL
+Theme URI:          http://krieger.jhu.edu
+Github Theme URI:   https://github.com/ksascomm/ksas_academic_department
+Description:        Theme for KSAS academic Departments, Programs, and Centers. Built off FoundationPress.
+Version:            1.0.0
+Author:             Tim Gelles
+Author URI:         http://krieger.jhu.edu/
+Template:           ksas_academic_department
+License:            MIT License
+License URI:        http://www.opensource.org/licenses/mit-license.php
+*/
+
+.featured-hero .orbit-caption {
+    padding: .5rem 0;
+    background: rgba(0,0,0,.75);
+}
+
+.featured-hero .orbit-caption h1 {
+    font-size: 2rem;
+    width: 100%;
+    float: left;
+    padding-right: .625rem;
+    padding-left: .625rem;
+
+}
+
+@media print, screen and (min-width: 40em) {
+	.featured-hero .orbit-caption h1 {
+	    padding-right: .9375rem;
+	    padding-left: .9375rem;
+	}
+}
+
+@media print, screen and (min-width: 40em) and (min-width: 64em) {
+	.featured-hero .orbit-caption h1 {
+	    padding-right: .9375rem;
+	    padding-left: .9375rem;
+	}
+}
+
+@media print, screen and (min-width: 64em) {
+	.featured-hero .orbit-caption h1 {
+	    width: 66.66667%;
+	    float: left;
+	    padding-right: .625rem;
+	    padding-left: .625rem;
+	    position: relative;
+	    left: 8.33333%;
+	}
+}
+
+.featured-hero {
+	position: relative;
+}
+
+.sidebar .sidebar-menu ul.nav li:not(.current_page_item):not(.current_page_parent):not(.current_page_ancestor) ul.sub-menu {
+    display: inherit;
+}
+
+.homepage-news time.updated {
+    color: inherit;
+	text-transform: inherit;
+}
+
+.program-homepage > .post-listing h2, .program-homepage > .post-singular h2 {
+	font-size: 1.25rem;
+}
+
+.program-homepage > .post-listing h2 small, .program-homepage > .post-singular h2 small {
+	font-size: 75%;
+}
+
+.program-homepage > .main-content h2, .program-homepage > .main-content-full-width h2 {
+	font-size: 1.5rem;
+}
+
+.program-intro .entry-content p {
+	font-size: 1.25rem;
+}
+
+.top-bar .dropdown .current_program a {
+	color: #fefefe;
+}
