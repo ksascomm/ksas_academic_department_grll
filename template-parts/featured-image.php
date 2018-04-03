@@ -18,16 +18,15 @@ if ( has_post_thumbnail( $post->ID ) ) : ?>
     //otherwise, randomly display one of the following images:
     $theme = get_template_directory_uri();
     $bg = array(
-    		$theme.'/dist/assets/images/header-images/header-1.jpg', 
-    		$theme.'/dist/assets/images/header-images/header-2.jpg', 
-    		$theme.'/dist/assets/images/header-images/header-3.jpg', 
-    		$theme.'/dist/assets/images/header-images/header-4.jpg', 
-    		$theme.'/dist/assets/images/header-images/header-5.jpg', 
-    		$theme.'/dist/assets/images/header-images/header-6.jpg', 
-    		$theme.'/dist/assets/images/header-images/header-7.jpg',
-    		$theme.'/dist/assets/images/header-images/header-8.jpg',
-    		$theme.'/dist/assets/images/header-images/header-9.jpg',
-    		$theme.'/dist/assets/images/header-images/header-10.jpg' 
+    		$theme.'/dist/assets/images/header-images/deptThemeStandard02.jpg', 
+    		$theme.'/dist/assets/images/header-images/deptThemeStandard03.jpg', 
+    		$theme.'/dist/assets/images/header-images/deptThemeStandard04.jpg', 
+    		$theme.'/dist/assets/images/header-images/deptThemeStandard05.jpg', 
+    		$theme.'/dist/assets/images/header-images/deptThemeStandard06.jpg', 
+    		$theme.'/dist/assets/images/header-images/deptThemeStandard07.jpg',
+    		$theme.'/dist/assets/images/header-images/deptThemeStandard08.jpg',
+    		$theme.'/dist/assets/images/header-images/deptThemeStandard09.jpg',
+    		$theme.'/dist/assets/images/header-images/deptThemeStandard10.jpg' 
     		); // array of filenames
 
     $i = rand(0, count($bg)-1); // generate random number size of the array
