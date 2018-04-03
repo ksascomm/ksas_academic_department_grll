@@ -222,31 +222,6 @@ function post_program_add_taxonomy_filters() {
 
 add_action( 'restrict_manage_posts', 'post_program_add_taxonomy_filters' );
 
-function delete_menu_transients()
-{
-	$terms = get_terms('program', array('hide_empty' => false));
-	$term_names = array();
-		foreach( $terms as $term) { 
-			$menu = $term->slug;
-			delete_transient('menu_' . $menu . '_query');
-		}
-}
- 
-add_action( 'wp_update_nav_menu', 'delete_menu_transients' );
-
-
-function delete_news_transients()
-{
-	$terms = get_terms('program', array('hide_empty' => false));
-	$term_names = array();
-		foreach( $terms as $term) { 
-			$menu = $term->slug;
-			delete_transient('news_' . $menu . '_query');
-		}
-	delete_transient('news_mainpage_query');
-}
-	add_action('save_post','delete_news_transients');
-
 function create_page_title_grll() {
 	$post = get_queried_object_id();
 	$program_slug = get_the_program_slug($post);

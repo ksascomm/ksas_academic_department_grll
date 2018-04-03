@@ -17,7 +17,6 @@ get_header(); ?>
 
 /********NEWS QUERY**************/
 	$news_quantity = $theme_option['flagship_sub_news_quantity']; $news_query_cond = $theme_option['flagship_sub_news_query_cond'];
-	if ( false === ( $news_query = get_transient( 'news_' . $program_slug . '_query' ) ) ) {
 	    if ($news_query_cond === 1) {
 		    $news_query = new WP_Query(array(
 		    	'post_type' => 'post',
@@ -52,8 +51,7 @@ get_header(); ?>
 		    		)),
 		    	'posts_per_page' => $news_quantity));
 		}
-	    set_transient( 'news_' . $program_slug . '_query', $news_query, 2592000 );
-	}?>
+	    ?>
 
 <?php if ( $slider_query->have_posts() ) : while ($slider_query->have_posts()) : $slider_query->the_post(); ?>
 	<?php get_template_part( 'template-parts/program-home-featured-image' ); ?>
