@@ -46,8 +46,6 @@
 				wp_nav_menu( array(
 					'theme_location' => 'top-bar-r',
 					'menu_class' => 'nav',
-					'submenu' => 'About',
-					'depth' => 2,
 					'items_wrap' => '<ul class="%2$s" role="navigation" aria-label="Sidebar Menu">%3$s</ul>',
 				)); ?>
 			</div>
