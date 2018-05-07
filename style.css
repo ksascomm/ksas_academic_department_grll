@@ -54,6 +54,12 @@ License URI:        http://www.opensource.org/licenses/mit-license.php
 	position: relative;
 }
 
+@media screen and (min-width: 75em) {
+	.featured-hero.program-home {
+	    height: 20rem;
+	}
+}
+
 .sidebar .sidebar-menu ul.nav li:not(.current_page_item):not(.current_page_parent):not(.current_page_ancestor) ul.sub-menu {
     display: inherit;
 }
