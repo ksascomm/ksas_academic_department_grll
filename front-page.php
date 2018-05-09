@@ -11,6 +11,7 @@ get_header(); ?>
 /********SLIDER QUERY**************/
 	$slider_query = new WP_Query(array(
 		'post_type' => 'slider',
+		'orderby' => 'rand',
 		'posts_per_page' => '-1'));
 /********NEWS QUERY**************/
 	$news_query_cond = $theme_option['flagship_sub_news_query_cond'];
