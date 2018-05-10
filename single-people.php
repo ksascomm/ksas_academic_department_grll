@@ -8,8 +8,7 @@
 get_header(); ?>
   <?php 
     $program_slug = get_the_program_slug($post);
-    $program_name = get_the_program_name($post);
-    if($program_name == 'French' || $program_name == 'German' || $program_name == 'Hebrew' || $program_name == 'Italian' || $program_name == 'Media Literacy' || $program_name == 'Portuguese' || $program_name == 'Spanish' ) : ?>
+    $program_name = get_the_program_name($post); ?>
 
 <div class="main-container" id="page">
     <div class="main-grid">
@@ -161,37 +160,36 @@ get_header(); ?>
             </article>
                 <?php endwhile; ?>
             <?php endif; ?>
-    </main>
-    <?php do_action('foundationpress_after_content'); ?>
-    <div class="sidebar">
-        <aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation">
-            <div class="sidebar-menu">
-                <h1 class="sidebar-menu-title" id="sidebar-navigation">Explore all <a href="<?php echo get_home_url();?>/people/" aria-label="Sidebar Menu: People">People</a></h1>
-                <?php
-                    wp_nav_menu( array( 
-                        'theme_location' => 'top-bar-r', 
-                        'menu_class' => 'nav', 
-                        'submenu' => 'People',
-                        'depth' => 2,
-                        'items_wrap' => '<ul class="%2$s" role="navigation" aria-label="Sidebar Menu">%3$s</ul>',
-                    ));?>
-            </div>
-        </aside>
-        <aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation">
-            <div class="sidebar-menu <?php echo $program_slug;?>">
-                <h1 class="sidebar-menu-title" id="sidebar-navigation">Also in <a href="<?php echo site_url('/') . $program_slug; ?>" aria-label="Sidebar Menu: <?php echo $program_name; ?>"><?php echo $program_name; ?> Program</a></h1>
-                <?php
-                    wp_nav_menu( array( 
-                        'menu_class' => 'nav', 
-                        'menu' => $program_name,
-                        'depth' => 1,
-                        'items_wrap' => '<ul class="%2$s" role="navigation" aria-label="Sidebar Menu">%3$s</ul>',
-                    ));?>
-            </div>
-        </aside>
-    <?php endif;?>        
+        </main>
+        <?php do_action('foundationpress_after_content'); ?>
+        <div class="sidebar">
+            <aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation">
+                <div class="sidebar-menu">
+                    <h1 class="sidebar-menu-title" id="sidebar-navigation">Explore all <a href="<?php echo get_home_url();?>/people/" aria-label="Sidebar Menu: People">People</a></h1>
+                    <?php
+                        wp_nav_menu( array( 
+                            'theme_location' => 'top-bar-r', 
+                            'menu_class' => 'nav', 
+                            'submenu' => 'People',
+                            'depth' => 2,
+                            'items_wrap' => '<ul class="%2$s" role="navigation" aria-label="Sidebar Menu">%3$s</ul>',
+                        ));?>
+                </div>
+            </aside>
+            <aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation">
+                <div class="sidebar-menu <?php echo $program_slug;?>">
+                    <h1 class="sidebar-menu-title" id="sidebar-navigation">Also in <a href="<?php echo site_url('/') . $program_slug; ?>" aria-label="Sidebar Menu: <?php echo $program_name; ?>"><?php echo $program_name; ?> Program</a></h1>
+                    <?php
+                        wp_nav_menu( array( 
+                            'menu_class' => 'nav', 
+                            'menu' => $program_name,
+                            'depth' => 1,
+                            'items_wrap' => '<ul class="%2$s" role="navigation" aria-label="Sidebar Menu">%3$s</ul>',
+                        ));?>
+                </div>
+            </aside>     
+        </div>
     </div>
-</div>
 </div>
 <?php
 get_footer();
