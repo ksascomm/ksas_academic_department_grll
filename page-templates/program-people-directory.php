@@ -3,10 +3,10 @@
 Template Name: People Directory (GRLL Program)
 */
 get_header(); ?>
-<?php get_template_part( 'template-parts/featured-image' ); ?>
 <?php
 	$theme_option = flagship_sub_get_global_options();
 	$program_slug = get_the_program_slug($post);
+	$program_name = get_the_program_name($post);
 	$roles = get_terms('role', array(
 		'orderby' 		=> 'slug',
 		'order'			=> 'ASC',
@@ -35,7 +35,7 @@ get_header(); ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 			<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 				<header aria-label="<?php the_title(); ?>">
-					<h1 class="entry-title"><?php the_title(); ?></h1>
+					<h1 class="entry-title"><?php echo $program_name;?> Program <?php the_title(); ?> Directory</h1>
 				</header>
 				<?php do_action( 'foundationpress_page_before_entry_content' ); ?>
 				<div class="entry-content">
