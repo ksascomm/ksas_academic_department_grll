@@ -3,7 +3,7 @@ Theme Name:         KSAS Academic Department: GRLL
 Theme URI:          http://krieger.jhu.edu
 Github Theme URI:   https://github.com/ksascomm/ksas_academic_department
 Description:        Theme for GRLL Department. Child Theme of Academic Department. Built off FoundationPress.
-Version:            1.0.0
+Version:            1.0.1
 Author:             Tim Gelles
 Author URI:         http://krieger.jhu.edu/
 Template:           ksas_academic_department
@@ -87,4 +87,8 @@ License URI:        http://www.opensource.org/licenses/mit-license.php
 
 .top-bar .dropdown .current_program a {
 	color: #fefefe;
+}
+
+.sidebar .sidebar-menu ul.nav li ul.sub-menu {
+	display: inherit;
 }
