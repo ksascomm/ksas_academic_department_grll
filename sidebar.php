@@ -53,9 +53,9 @@
 	<?php endif;?>
 
 	<?php if ( is_singular('people') ) : ?>
-		<aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation">
+		<aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation-people">
 			<div class="sidebar-menu">
-				<h1 class="sidebar-menu-title" id="sidebar-navigation">Also in <a href="<?php echo get_home_url();?>/people/" aria-label="Sidebar Menu: People">People</a></h1>
+				<h1 class="sidebar-menu-title" id="sidebar-navigation-people">Also in <a href="<?php echo get_home_url();?>/people/" aria-label="Sidebar Menu: People">People</a></h1>
 				<?php
 					wp_nav_menu( array( 
 						'theme_location' => 'top-bar-r', 
