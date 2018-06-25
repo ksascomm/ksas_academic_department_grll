@@ -69,11 +69,11 @@ get_header(); ?>
 				<?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
 					<?php get_template_part( 'template-parts/content-news', get_post_format() ); ?>
 				<?php endwhile; ?>
-				<h4>
+				<h3>
 					<a href="<?php echo site_url('/program/') . $program_slug; ?>">
 						View More <?php echo $theme_option['flagship_sub_feed_name']; ?>
 					</a>
-				</h4>
+				</h3>
 			<?php endif; ?>            
         </main>
         <?php get_sidebar(); ?>
