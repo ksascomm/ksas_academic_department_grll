@@ -62,7 +62,7 @@
 						'menu_class' => 'nav', 
 						'submenu' => 'People',
 						'depth' => 2,
-						'items_wrap' => '<ul class="%2$s" role="navigation" aria-label="Sidebar Menu">%3$s</ul>',
+						'items_wrap' => '<ul class="%2$s" role="navigation" aria-label="Sidebar Menu: People Directory">%3$s</ul>',
 					));?>
 			</div>
 			<?php if (has_term('', 'role') && !has_term('job-market-candidate', 'role')) : ?>			
