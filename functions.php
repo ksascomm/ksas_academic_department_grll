@@ -50,10 +50,10 @@ function create_the_sidebars() {
 				'name'          => $single_name .  ' Sidebar',
 				'id'            => $single_slug . '-sb',
 				'description'   => 'This is the ' . $single_name . ' homepage sidebar',
-				'before_widget' => '<div id="%1$s" class="widget %2$s row">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<div class="widget_title"><h5 class="white">',
-				'after_title'   => '</h5></div>' 
+				'before_widget' => '<aside id="%1$s" class="widget %2$s" aria-label="Sidebar Content %1$s">',
+				'after_widget'  => '</aside>',
+				'before_title'  => '<div class="widget_title" role="heading"><h4>',
+				'after_title'   => '</h4></div>' 
 				));
 		}
 
