@@ -165,7 +165,7 @@ get_header(); ?>
         <div class="sidebar">
             <aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation-people">
                 <div class="sidebar-menu">
-                    <h1 class="sidebar-menu-title" id="sidebar-navigation-people">Explore all <a href="<?php echo get_home_url();?>/people/">People</a></h1>
+                    <h1 class="sidebar-menu-title" id="sidebar-navigation-people">Explore all <a href="<?php echo get_home_url();?>/people/" aria-label="Sidebar Menu: People Heading">People</a></h1>
                     <?php
                         wp_nav_menu( array( 
                             'theme_location' => 'top-bar-r', 
@@ -178,7 +178,7 @@ get_header(); ?>
             </aside>
             <aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation">
                 <div class="sidebar-menu <?php echo $program_slug;?>">
-                    <h1 class="sidebar-menu-title" id="sidebar-navigation">Also in <a href="<?php echo site_url('/') . $program_slug; ?>" <?php echo $program_name; ?>"><?php echo $program_name; ?> Program</a></h1>
+                    <h1 class="sidebar-menu-title" id="sidebar-navigation">Also in <a href="<?php echo site_url('/') . $program_slug; ?>" aria-label="<?php echo $program_name; ?> Program Menu Heading"><?php echo $program_name; ?> Program</a></h1>
                     <?php
                         wp_nav_menu( array( 
                             'menu_class' => 'nav', 
