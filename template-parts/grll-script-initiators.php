@@ -53,3 +53,21 @@ if($program_name == 'French' || $program_name == 'German' || $program_name == 'H
 	   });
 	</script>
 <?php endif;?>
+
+<?php if (is_page_template('page-templates/courses-undergrad-program.php') || is_page_template('page-templates/courses-graduate-program.php') ) : ?>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.10.16/datatables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.16/datatables.min.js"></script>
+  <script>
+    jQuery(document).ready( function($) {
+      $('a[aria-selected="true"]').on( 'shown.bs.tab', function (e) {
+          $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
+      } );
+    
+      $('table.course-table').DataTable( {
+          "order": [[ 0, "asc" ]],
+          "lengthMenu": [[15, 30, -1],[15, 30, "All"]],
+          "dom": '<"top"f>ilrt<"bottom"p><"clear">'
+      } );
+  } );
+  </script>
+<?php endif; ?>
