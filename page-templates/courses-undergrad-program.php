@@ -14,7 +14,7 @@ get_header(); ?>
 		$fall = 'fall%202018';
 		//$spring = 'spring%202018';
 		//$intersession = 'intersession%202018';
-		$summer = 'summer%202018';
+		//$summer = 'summer%202018';
 		$open = 'open';
 		$approval = 'approval%20required';
 		$closed = 'closed';
@@ -34,15 +34,15 @@ get_header(); ?>
 		$courses_fall_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $fall . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;
 		//$courses_spring_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $spring . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;
 		//$courses_intersession_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $intersession . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;		
-		$courses_summer_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $summer . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;
+		//$courses_summer_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $summer . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;
 		$courses_call = array(
 			$courses_fall_url,
 			//$courses_spring_url,
-			$courses_summer_url,
+			//$courses_summer_url,
 			);
 		$courses_call_fall = $courses_fall_url;
 		//$courses_call_spring = $courses_spring_url;
-		$courses_call_summer = $courses_summer_url;
+		//$courses_call_summer = $courses_summer_url;
 	
 	//Course display callback function
 		function display_courses($result) {
@@ -128,32 +128,10 @@ get_header(); ?>
             <?php while ( have_posts() ) : the_post(); ?>
                 <?php get_template_part( 'template-parts/content', 'page' ); ?>
 				<ul class="tabs" data-tabs id="courses-tabs">
-				 	<li class="tabs-title is-active"><a href="#Summer">Summer 2018</a></li>
-				 	<li class="tabs-title"><a href="#Fall">Fall 2018</a></li>
+				 	<li class="tabs-title is-active"><a href="#Fall">Fall 2018</a></li>
 				</ul>
 				<div class="tabs-content course-listings" data-tabs-content="courses-tabs">
-					 <div class="tabs-panel is-active" id="Summer">
-					 	<p class="show-for-sr" id="tblDescSummer">Column one has the course number and section. Other columns show the course title, days offered, instructor's name, room number, if the course is cross-referenced with another pogram, and a option to view additional course information in a pop-up window.</p>
-					 	<table aria-describedby="tblDescSummer" class="course-table">
-							<thead>
-								<tr>
-									<th>Course # (Section)</th>
-									<th>Title</th>
-									<th>Day/Times</th>
-									<th>Instructor</th>
-									<th>Room</th>
-									<th>PosTag(s)</th>
-									<th>Info</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php $course_curl->get($courses_call_summer, 'parse_courses'); ?>
-							</tbody>
-						</table>
-					 </div>
-				</div>
-				<div class="tabs-content course-listings" data-tabs-content="courses-tabs">
-					 <div class="tabs-panel" id="Fall">
+					 <div class="tabs-panel is-active" id="Fall">
 					 	<p class="show-for-sr" id="tblDescFall">Column one has the course number and section. Other columns show the course title, days offered, instructor's name, room number, if the course is cross-referenced with another pogram, and a option to view additional course information in a pop-up window.</p>
 					 	<table aria-describedby="tblDescFall" class="course-table">
 							<thead>
