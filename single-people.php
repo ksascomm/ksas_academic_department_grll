@@ -118,7 +118,7 @@ get_header(); ?>
                     <?php endif; ?>
                 </ul>
                 
-                <div class="tabs-content" data-tabs-content="profile-tabs">
+                <div class="tabs-content people-content" data-tabs-content="profile-tabs">
                     <?php if (get_post_meta($post->ID, 'ecpt_bio', true) ) : ?>
                     <div class="tabs-panel is-active" id="bioTab" itemprop="articleBody">
                         <?php echo get_post_meta($post->ID, 'ecpt_bio', true); ?>
