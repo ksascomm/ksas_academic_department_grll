@@ -23,7 +23,7 @@
  <div class="main-container" id="page">
     <div class="main-grid">
         <main class="main-content">
-		<h1 class="page-title capitalize"><?php echo $program_name . ' ' . $theme_option['flagship_sub_feed_name']; ?> Archive</h1>
+		<h1 class="page-title"><?php echo $program_name . ' ' . $theme_option['flagship_sub_feed_name']; ?> Archive</h1>
 		<?php while (have_posts()) : the_post(); if('post' == get_post_type()) : ?>     
 			<?php get_template_part( 'template-parts/content-news', get_post_format() ); ?>
          <?php endif; endwhile; ?>
