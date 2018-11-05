@@ -1,7 +1,7 @@
 <?php
 $program_name = get_the_program_name($post);
 
-if($program_name == 'French' || $program_name == 'German' || $program_name == 'Hebrew' || $program_name == 'Italian' || $program_name == 'Media Literacy' || $program_name == 'Portuguese' || $program_name == 'Spanish' ) : ?>
+if($program_name == 'French' || $program_name == 'German' || $program_name == 'Hebrew and Yiddish' || $program_name == 'Italian' || $program_name == 'Portuguese' || $program_name == 'Spanish' ) : ?>
 	<script>
 	   jQuery(document).ready( function($) {
 	    $('li[aria-label="Language Programs"]').addClass('current_page_parent current_page_ancestor');
@@ -22,22 +22,16 @@ if($program_name == 'French' || $program_name == 'German' || $program_name == 'H
 	    $('a[href*="german"]').parent('#menu-main-menu-1 li').addClass('current_page_parent current_page_ancestor current_program');
 	   });
 	</script>	
-<?php elseif ($program_name == 'Hebrew') :?>
+<?php elseif ($program_name == 'Hebrew and Yiddish') :?>
 	<script>
 	   jQuery(document).ready( function($) {
-	    $('a[href*="hebrew"]').parent('#menu-main-menu-1 li').addClass('current_page_parent current_page_ancestor current_program');
+	    $('a[href*="hebrew-and-yiddish"]').parent('#menu-main-menu-1 li').addClass('current_page_parent current_page_ancestor current_program');
 	   });
 	</script>
 <?php elseif ($program_name == 'Italian') :?>
 	<script>
 	   jQuery(document).ready( function($) {
 	    $('a[href*="italian"]').parent('#menu-main-menu-1 li').addClass('current_page_parent current_page_ancestor current_program');
-	   });
-	</script>
-<?php elseif ($program_name == 'Media Literacy') :?>
-	<script>
-	   jQuery(document).ready( function($) {
-	    $('a[href*="media-literacy"]').parent('#menu-main-menu-1 li').addClass('current_page_parent current_page_ancestor current_program');
 	   });
 	</script>
 <?php elseif ($program_name == 'Portuguese') :?>

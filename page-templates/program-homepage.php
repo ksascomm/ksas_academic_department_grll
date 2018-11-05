@@ -7,7 +7,7 @@ get_header(); ?>
 <?php /********SET VARIABLES**************/
 	$theme_option = flagship_sub_get_global_options();
 	$program_slug = get_the_program_slug($post);
-
+	$program_name = get_the_program_name($post);
 
 /********SLIDER QUERY*************/
 	$slider_query = new WP_Query(array(
@@ -65,7 +65,7 @@ get_header(); ?>
                 </div>
             <?php endwhile;?>
 			<?php if ( $news_query->have_posts() ) : ?>
-			<h2 class="capitalize"><?php echo $program_slug . ' ' . $theme_option['flagship_sub_feed_name']; ?></h2>
+			<h2><?php echo $program_name . ' ' . $theme_option['flagship_sub_feed_name']; ?></h2>
 				<?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
 					<?php get_template_part( 'template-parts/content-news', get_post_format() ); ?>
 				<?php endwhile; ?>
