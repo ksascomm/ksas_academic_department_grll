@@ -91,71 +91,69 @@ get_header(); ?>
                     </div>
                 </div>
                 <?php if (has_term('', 'role') && ! has_term('job-market-candidate', 'role') ) : ?>
-            <div class="row">
-                <ul class="tabs margin10" data-tabs id="profile-tabs">
-                    <?php if (get_post_meta($post->ID, 'ecpt_bio', true) ) : ?>
-                    <li class="tabs-title is-active"><a href="#bioTab">Biography</a></li>
-                    <?php endif; ?>
-                    <?php if (get_post_meta($post->ID, 'ecpt_research', true) ) : ?>
-                    <li class="tabs-title"><a href="#researchTab">Research</a></li>
-                    <?php endif; ?>
+                    <ul class="tabs margin10" data-tabs id="profile-tabs">
+                        <?php if (get_post_meta($post->ID, 'ecpt_bio', true) ) : ?>
+                        <li class="tabs-title is-active"><a href="#bioTab">Biography</a></li>
+                        <?php endif; ?>
+                        <?php if (get_post_meta($post->ID, 'ecpt_research', true) ) : ?>
+                        <li class="tabs-title"><a href="#researchTab">Research</a></li>
+                        <?php endif; ?>
+                        
+                        <?php if (get_post_meta($post->ID, 'ecpt_teaching', true) ) : ?>
+                        <li class="tabs-title"><a href="#teachingTab">Teaching</a></li>
+                        <?php endif; ?>
+                        
+                        <?php if (get_post_meta($post->ID, 'ecpt_publications', true) ) : ?>
+                        <li class="tabs-title"><a href="#publicationsTab">Publications</a></li>
+                        <?php endif; ?>
+                        <?php if (get_post_meta($post->ID, 'ecpt_books_cond', true) == 'on' ) : ?>
+                        <li class="tabs-title"><a href="#booksTab">Books</a></li>
+                        <?php endif; ?>
+                        <?php if (get_post_meta($post->ID, 'ecpt_extra_tab_title', true) ) : ?>
+                        <li class="tabs-title"><a href="#extraTab"><?php echo get_post_meta($post->ID, 'ecpt_extra_tab_title', true); ?></a></li>
+                        <?php endif; ?>
+                        <?php if (get_post_meta($post->ID, 'ecpt_extra_tab_title2', true) ) : ?>
+                        <li class="tabs-title"><a href="#extra2Tab"><?php echo get_post_meta($post->ID, 'ecpt_extra_tab_title2', true); ?></a></li>
+                        <?php endif; ?>
+                    </ul>
                     
-                    <?php if (get_post_meta($post->ID, 'ecpt_teaching', true) ) : ?>
-                    <li class="tabs-title"><a href="#teachingTab">Teaching</a></li>
-                    <?php endif; ?>
-                    
-                    <?php if (get_post_meta($post->ID, 'ecpt_publications', true) ) : ?>
-                    <li class="tabs-title"><a href="#publicationsTab">Publications</a></li>
-                    <?php endif; ?>
-                    <?php if (get_post_meta($post->ID, 'ecpt_books_cond', true) == 'on' ) : ?>
-                    <li class="tabs-title"><a href="#booksTab">Books</a></li>
-                    <?php endif; ?>
-                    <?php if (get_post_meta($post->ID, 'ecpt_extra_tab_title', true) ) : ?>
-                    <li class="tabs-title"><a href="#extraTab"><?php echo get_post_meta($post->ID, 'ecpt_extra_tab_title', true); ?></a></li>
-                    <?php endif; ?>
-                    <?php if (get_post_meta($post->ID, 'ecpt_extra_tab_title2', true) ) : ?>
-                    <li class="tabs-title"><a href="#extra2Tab"><?php echo get_post_meta($post->ID, 'ecpt_extra_tab_title2', true); ?></a></li>
-                    <?php endif; ?>
-                </ul>
-                
-                <div class="tabs-content people-content" data-tabs-content="profile-tabs">
-                    <?php if (get_post_meta($post->ID, 'ecpt_bio', true) ) : ?>
-                    <div class="tabs-panel is-active" id="bioTab" itemprop="articleBody">
-                        <?php echo get_post_meta($post->ID, 'ecpt_bio', true); ?>
-                    </div>
-                    <?php endif; ?>
-                    
-                    <?php if (get_post_meta($post->ID, 'ecpt_research', true) ) : ?>
-                    <div class="tabs-panel" id="researchTab"><?php echo get_post_meta($post->ID, 'ecpt_research', true); ?></div>
-                    <?php endif; ?>
-                    
-                    <?php if (get_post_meta($post->ID, 'ecpt_teaching', true) ) : ?>
-                    <div class="tabs-panel" id="teachingTab"><?php echo get_post_meta($post->ID, 'ecpt_teaching', true); ?></div>
-                    <?php endif; ?>
-                    
-                    <?php if (get_post_meta($post->ID, 'ecpt_publications', true) ) : ?>
-                    <div class="tabs-panel" id="publicationsTab">
+                    <div class="tabs-content people-content" data-tabs-content="profile-tabs">
+                        <?php if (get_post_meta($post->ID, 'ecpt_bio', true) ) : ?>
+                        <div class="tabs-panel is-active" id="bioTab" itemprop="articleBody">
+                            <?php echo get_post_meta($post->ID, 'ecpt_bio', true); ?>
+                        </div>
+                        <?php endif; ?>
+                        
+                        <?php if (get_post_meta($post->ID, 'ecpt_research', true) ) : ?>
+                        <div class="tabs-panel" id="researchTab"><?php echo get_post_meta($post->ID, 'ecpt_research', true); ?></div>
+                        <?php endif; ?>
+                        
+                        <?php if (get_post_meta($post->ID, 'ecpt_teaching', true) ) : ?>
+                        <div class="tabs-panel" id="teachingTab"><?php echo get_post_meta($post->ID, 'ecpt_teaching', true); ?></div>
+                        <?php endif; ?>
+                        
+                        <?php if (get_post_meta($post->ID, 'ecpt_publications', true) ) : ?>
+                        <div class="tabs-panel" id="publicationsTab">
+                            <?php
+                            if (get_post_meta($post->ID, 'ecpt_publications', true) ) :
+                                echo get_post_meta($post->ID, 'ecpt_publications', true);
+                            endif;
+                            ?>
+                        </div>
+                        <?php endif; ?>
                         <?php
-                        if (get_post_meta($post->ID, 'ecpt_publications', true) ) :
-                            echo get_post_meta($post->ID, 'ecpt_publications', true);
+                        if (get_post_meta($post->ID, 'ecpt_books_cond', true) == 'on' ) :
+                            locate_template('template-parts/faculty-books.php', true, false);
                         endif;
                         ?>
+                        <?php if (get_post_meta($post->ID, 'ecpt_extra_tab', true) ) : ?>
+                        <div class="tabs-panel"  id="extraTab"><?php echo get_post_meta($post->ID, 'ecpt_extra_tab', true); ?></div>
+                        <?php endif; ?>
+                        
+                        <?php if (get_post_meta($post->ID, 'ecpt_extra_tab2', true) ) : ?>
+                        <div class="tabs-panel" id="extra2Tab"><?php echo get_post_meta($post->ID, 'ecpt_extra_tab2', true); ?></div>
+                        <?php endif; ?>
                     </div>
-                    <?php endif; ?>
-                    <?php
-                    if (get_post_meta($post->ID, 'ecpt_books_cond', true) == 'on' ) :
-                        locate_template('template-parts/faculty-books.php', true, false);
-                    endif;
-                    ?>
-                    <?php if (get_post_meta($post->ID, 'ecpt_extra_tab', true) ) : ?>
-                    <div class="tabs-panel"  id="extraTab"><?php echo get_post_meta($post->ID, 'ecpt_extra_tab', true); ?></div>
-                    <?php endif; ?>
-                    
-                    <?php if (get_post_meta($post->ID, 'ecpt_extra_tab2', true) ) : ?>
-                    <div class="tabs-panel" id="extra2Tab"><?php echo get_post_meta($post->ID, 'ecpt_extra_tab2', true); ?></div>
-                    <?php endif; ?>
-                </div>
-            </div>
                 <?php endif; ?>
             </article>
                 <?php endwhile; ?>
@@ -176,6 +174,7 @@ get_header(); ?>
                         ));?>
                 </div>
             </aside>
+            <?php if (has_term('', 'role') && ! is_single('earle-havens') ) : ?>
             <aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation">
                 <div class="sidebar-menu <?php echo $program_slug;?>">
                     <h1 class="sidebar-menu-title" id="sidebar-navigation">Also in <a href="<?php echo site_url('/') . $program_slug; ?>" aria-label="<?php echo $program_name; ?> Program Menu Heading"><?php echo $program_name; ?> Program</a></h1>
@@ -187,7 +186,8 @@ get_header(); ?>
                             'items_wrap' => '<ul class="%2$s" role="navigation" aria-label="Program Menu">%3$s</ul>',
                         ));?>
                 </div>
-            </aside>     
+            </aside>
+            <?php endif;?>   
         </div>
     </div>
 </div>
