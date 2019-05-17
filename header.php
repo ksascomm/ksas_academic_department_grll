@@ -124,7 +124,11 @@
 		</nav>
 		<?php if ( ! is_front_page() ) : ?>
 		<div class="secondary">
-			 <?php foundationpress_breadcrumb(); ?>
+			<div class="grid-container">
+				<div class="grid-x grid-padding-x">		
+			 		<?php foundationpress_breadcrumb(); ?>
+			 	</div>
+			 </div>
 		</div>
 	<?php endif; ?>
 	</header>
