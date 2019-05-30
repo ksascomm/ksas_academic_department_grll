@@ -12,7 +12,7 @@ get_header(); ?>
 	$slider_query = new WP_Query(array(
 		'post_type' => 'slider',
 		'orderby' => 'rand',
-		'posts_per_page' => '-1'));
+		'posts_per_page' => 10));
 /********NEWS QUERY**************/
 	$news_query_cond = $theme_option['flagship_sub_news_query_cond'];
 	$news_quantity = $theme_option['flagship_sub_news_quantity'];
@@ -66,7 +66,7 @@ get_header(); ?>
 	<?php endif; ?>
 	<?php $slider_mobile_query = new WP_Query(array(
 		'post_type' => 'slider',
-		'posts_per_page' => '1',
+		'posts_per_page' => 1,
 		'orderby' => 'rand',
 	));
 		if ( $slider_mobile_query->have_posts() ) : while ($slider_mobile_query->have_posts() ) : $slider_mobile_query->the_post(); ?>

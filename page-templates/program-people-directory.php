@@ -90,7 +90,7 @@ get_header(); ?>
 								'meta_key' => 'ecpt_people_alpha',
 								'orderby' => 'meta_value',
 								'order' => 'ASC',
-								'posts_per_page' => '-1'));
+								'posts_per_page' => 200));
 											}
 					if ($people_query->have_posts() ) : ?>
 					<li class="person sub-head quicksearch-match <?php echo $role->slug; ?>">

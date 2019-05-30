@@ -13,7 +13,7 @@ get_header(); ?>
 	$slider_query = new WP_Query(array(
 		'post_type' => 'slider',
 		'program' => $program_slug,
-		'posts_per_page' => '1'));
+		'posts_per_page' => 1));
 
 /********NEWS QUERY**************/
 	$news_quantity = $theme_option['flagship_sub_news_quantity']; $news_query_cond = $theme_option['flagship_sub_news_query_cond'];

@@ -4,7 +4,7 @@ $program_name = get_the_program_name($post);
 $slider_query = new WP_Query(array(
 	'post_type' => 'slider',
 	'program' => $program_slug,
-	'posts_per_page' => '1'));
+	'posts_per_page' => 1));
 ?>
 <?php if ( $slider_query->have_posts() ) : while ($slider_query->have_posts()) : $slider_query->the_post(); ?>
 	<?php get_template_part( 'template-parts/program-home-featured-image' ); ?>

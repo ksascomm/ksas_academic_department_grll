@@ -80,7 +80,7 @@
 							'meta_key' => 'ecpt_people_alpha',
 							'orderby' => 'meta_value',
 							'order' => 'ASC',
-							'posts_per_page' => '-1')); ?>
+							'posts_per_page' => 200)); ?>
 						<?php while ($jump_menu_query->have_posts()) : $jump_menu_query->the_post(); ?>				
 							<option value="<?php the_permalink() ?>"><?php the_title(); ?></option>
 						<?php endwhile; ?>
