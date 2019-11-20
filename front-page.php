@@ -37,7 +37,7 @@ get_header(); ?>
 	/********BEGIN SLIDER**************/
 	if ( $slider_query->have_posts() ) :?> 
 	<div class="fullscreen-image-slider hide-for-small-only">
-		<div class="orbit" role="region" aria-label="Homepage Slider" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
+		<div class="orbit" role="region" aria-label="Homepage Slider" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out; autoPlay: false;">
 			<div class="orbit-wrapper">	
 				<?php if ($slider_query->post_count > 1 ) : ?>
 				<div class="orbit-controls">
