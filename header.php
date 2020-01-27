@@ -44,13 +44,7 @@
 
 		<?php wp_head(); ?>
 		
-		<!--Scripts-->
-		<script>
-		!function(a,b,c,d,e,f,g){a.GoogleAnalyticsObject=e,a[e]=a[e]||function(){(a[e].q=a[e].q||[]).push(arguments)},a[e].l=1*new Date,f=b.createElement(c),g=b.getElementsByTagName(c)[0],f.async=1,f.src=d,g.parentNode.insertBefore(f,g)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-40512757-1","jhu.edu"),ga("send","pageview");
-		</script>
-		<script type="text/javascript">
-		!function(){var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src="//siteimproveanalytics.com/js/siteanalyze_11464.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)}();
-		</script>
+		<?php get_template_part( 'template-parts/analytics' ); ?>
 		<?php get_template_part( 'template-parts/script-initiators' ); ?>
 		<?php get_template_part( 'template-parts/grll-script-initiators' ); ?>
 	</head>
