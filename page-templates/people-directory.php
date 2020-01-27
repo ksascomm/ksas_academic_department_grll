@@ -73,7 +73,7 @@ get_header(); ?>
 					</div>
 				</div>
 				<?php if ($theme_option['flagship_sub_research_search'] == true) : ?>
-				<p>Filter all by Research Area:</p>
+				<p>Filter by Language:</p>
 				<?php $filters = get_terms('filter', array(
 					'orderby'       => 'name',
 					'order'         => 'ASC',
@@ -85,7 +85,7 @@ get_header(); ?>
 				<ul class="filter-list menu expertise-group" data-filter-group="expertise">
 					<?php foreach ( $filters as $filter ) : ?>
 					<li class="role-filter">
-						<a class="button capitalize" href="javascript:void(0)" data-filter=".<?php echo $filter->slug; ?>"><?php echo $filter->name; ?></a>
+						<a class="button capitalize" href="javascript:void(0)" data-filter=".<?php echo $filter->slug; ?>" aria-label="Filter <?php echo $filter->name; ?> "><?php echo $filter->name; ?></a>
 					</li>
 					<?php endforeach; ?>
 				</ul>
