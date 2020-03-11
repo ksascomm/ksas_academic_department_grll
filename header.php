@@ -49,6 +49,9 @@
 		<?php get_template_part( 'template-parts/grll-script-initiators' ); ?>
 	</head>
 	<body <?php body_class(); ?>>
+	<div class="alert" role="navigation" aria-label="COVID-19 Alerts">
+    	<a class="alert-message" href="https://hub.jhu.edu/novel-coronavirus-information/">Suspension of classes and other COVID-19 updates</a>
+	</div>
 	<div role="navigation" aria-label="Skip to main content">
 		<a class="skip-main show-on-focus" href="#page" >Skip to main content</a>
 	</div>
