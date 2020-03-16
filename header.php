@@ -50,7 +50,7 @@
 	</head>
 	<body <?php body_class(); ?>>
 	<div class="alert" role="navigation" aria-label="COVID-19 Alerts">
-    	<a class="alert-message" href="https://hub.jhu.edu/novel-coronavirus-information/">Suspension of classes and other COVID-19 updates</a>
+    	<a class="alert-message" href="https://krieger.jhu.edu/covid19/">COVID-19 information and resources for KSAS</a>
 	</div>
 	<div role="navigation" aria-label="Skip to main content">
 		<a class="skip-main show-on-focus" href="#page" >Skip to main content</a>
