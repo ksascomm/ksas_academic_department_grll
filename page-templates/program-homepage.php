@@ -10,10 +10,18 @@ get_header(); ?>
 	$program_name = get_the_program_name($post);
 
 /********SLIDER QUERY*************/
-	$slider_query = new WP_Query(array(
+	$program_home_slider_query = new WP_Query(array(
 		'post_type' => 'slider',
 		'program' => $program_slug,
-		'posts_per_page' => 1));
+		'posts_per_page' => 1,
+		'tax_query' => array(
+	        array(
+	            'taxonomy' => 'slider_type',
+	            'field'    => 'slug',
+	            'terms'    => 'program',
+	        )
+	    )
+	));
 
 /********NEWS QUERY**************/
 	$news_quantity = $theme_option['flagship_sub_news_quantity']; $news_query_cond = $theme_option['flagship_sub_news_query_cond'];
@@ -53,7 +61,7 @@ get_header(); ?>
 		}
 	    ?>
 
-<?php if ( $slider_query->have_posts() ) : while ($slider_query->have_posts()) : $slider_query->the_post(); ?>
+<?php if ( $program_home_slider_query->have_posts() ) : while ($program_home_slider_query->have_posts()) : $program_home_slider_query->the_post(); ?>
 	<?php get_template_part( 'template-parts/program-home-featured-image' ); ?>
 <?php endwhile; endif;?>
 <div class="main-container" id="page">

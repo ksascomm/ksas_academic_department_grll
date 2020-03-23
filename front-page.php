@@ -9,10 +9,19 @@ get_header(); ?>
 /********SET VARIABLES**************/
 	$theme_option = flagship_sub_get_global_options();
 /********SLIDER QUERY**************/
-	$slider_query = new WP_Query(array(
+	$hero_query = new WP_Query(array(
 		'post_type' => 'slider',
 		'orderby' => 'rand',
-		'posts_per_page' => 10));
+		'posts_per_page' => 1,
+		'tax_query' => array(
+	        array(
+	            'taxonomy' => 'slider_type',
+	            'field'    => 'slug',
+	            'terms'    => 'program',
+	            'operator' => 'NOT IN',
+	        ),
+	    )
+));
 /********NEWS QUERY**************/
 	$news_query_cond = $theme_option['flagship_sub_news_query_cond'];
 	$news_quantity = $theme_option['flagship_sub_news_quantity'];
@@ -35,46 +44,33 @@ get_header(); ?>
 					'posts_per_page' => $news_quantity));
 			}
 	/********BEGIN SLIDER**************/
-	if ( $slider_query->have_posts() ) :?> 
-	<div class="fullscreen-image-slider hide-for-small-only">
-		<div class="orbit" role="region" aria-label="Homepage Slider" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out; autoPlay: false;">
-			<div class="orbit-wrapper">	
-				<?php if ($slider_query->post_count > 1 ) : ?>
-				<div class="orbit-controls">
-					<button class="orbit-previous show-for-large" onclick="ga('send', 'event', 'Homepage Slider', 'Previous Slide Click');"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-					<button class="orbit-next show-for-large" onclick="ga('send', 'event', 'Homepage Slider', 'Next Slide Click');"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>				</div>
-				<?php endif;?>
+	if ( $hero_query->have_posts() ) :?> 
+	<header class="hero" role="banner" aria-label="Explore the Krieger School Slider">
+	<div class="full-screen-image show-for-large">
 
-				<ul class="orbit-container">
-				<?php $slidernumber = 0;
-				while ($slider_query->have_posts() ) : $slider_query->the_post(); $slidernumber++;?>
-					<li class="orbit-slide">	
-						<img class="orbit-image hide-for-print" src="<?php echo get_post_meta($post->ID, 'ecpt_slideimage', true); ?>" alt="<?php the_title(); ?>">
-					    <figcaption class="orbit-caption" aria-hidden="true">
-					      <h1><?php the_title(); ?></h1>
-					      <p><?php echo get_the_content(); ?></p>
-						   <?php if (get_post_meta($post->ID, 'ecpt_button', true) ) : ?>
-								<a href="<?php echo get_post_meta($post->ID, 'ecpt_urldestination', true); ?>" onclick="ga('send', 'event', 'Homepage Slider', 'Read More Click, Slide: <?php echo $slidernumber;?>', 'Destination: <?php echo get_post_meta($post->ID, 'ecpt_urldestination', true); ?>')" aria-label="<?php the_title(); ?>" class="button">Find Out More <span class="far fa-arrow-alt-circle-right"></span></a>
-							<?php endif;?>
-					    </figcaption>
-			   		</li>
-				<?php endwhile;?>
-				</ul>	
-			</div>		
-		</div>
+		<?php //if slider, show those posts
+		if ( $hero_query->have_posts() ) :  while ($hero_query->have_posts() ) : $hero_query->the_post(); ?>
+			<div class="front-hero slide" role="banner" data-interchange="[<?php the_post_thumbnail_url('featured-small'); ?>, small], [<?php the_post_thumbnail_url('featured-medium'); ?>, medium], [<?php the_post_thumbnail_url('full'); ?>, large], [<?php the_post_thumbnail_url('full'); ?>, xlarge]" aria-label="Featured Image">
+					<?php endwhile; wp_reset_postdata(); ?>
+				<div class="caption">
+					<h1><?php the_field( 'hero_title' ); ?></h1>
+					<p><?php the_field( 'hero_caption' ); ?></p>
+				</div>
+			</div>
+		<?php //if slider query empty, show post thumbnail
+		else : ?>
+			<?php if ( has_post_thumbnail( $post->ID ) ) : ?>
+				<div class="front-hero static" role="banner" data-interchange="[<?php the_post_thumbnail_url('featured-small'); ?>, small], [<?php the_post_thumbnail_url('featured-medium'); ?>, medium], [<?php the_post_thumbnail_url('full'); ?>, large], [<?php the_post_thumbnail_url('full'); ?>, xlarge]" aria-label="Featured Image">
+				<?php endif; ?>
+					<div class="caption">
+						<h1><?php the_field( 'hero_title' ); ?></h1>
+						<p><?php the_field( 'hero_caption' ); ?></p>
+					</div>
+				</div>
+		<?php endif;?>
+
 	</div>
 	<?php endif; ?>
-	<?php $slider_mobile_query = new WP_Query(array(
-		'post_type' => 'slider',
-		'posts_per_page' => 1,
-		'orderby' => 'rand',
-	));
-		if ( $slider_mobile_query->have_posts() ) : while ($slider_mobile_query->have_posts() ) : $slider_mobile_query->the_post(); ?>
-	<div class="front-hero-featured-image show-for-small-only hide-for-print" role="banner" aria-label="Mobile Hero Image">
-		<img class="featured-small" src="<?php echo get_post_meta($post->ID, 'ecpt_slideimage', true); ?>" alt="<?php the_title(); ?>">
-	</div>
-	<?php endwhile; endif;?>
-
 	<?php do_action( 'foundationpress_before_content' ); ?>
 	<?php while ( have_posts() ) : the_post(); ?>
 		<section class="background-bluejaysblue" id="page" role="main" tabindex="0" aria-label="Website Introduction">
@@ -85,12 +81,13 @@ get_header(); ?>
 						<div class="entry-content">
 							<?php the_content(); ?>
 						</div>
+					</div>
 				</div>
 			</div>
 		</section>
 	<?php endwhile;?>
 	<?php do_action( 'foundationpress_after_content' ); ?>
-
+	<?php get_template_part( 'template-parts/front-buckets'); ?>
 	<div class="main-container">
 	    <div class="main-grid homepage">
 	        <div class="main-content homepage-news">

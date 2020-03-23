@@ -1,7 +1,7 @@
 <?php
 function my_theme_enqueue_styles() {
 	$parent_style = 'main-stylesheet';
-    wp_enqueue_style( $parent_style, get_template_directory_uri() . '/dist/assets/css/app.css' );
+    wp_enqueue_style( $parent_style, get_template_directory_uri() . '/dist/assets/css/app.css', array(), filemtime(get_template_directory() . '/src/assets/scss'), 'all' );
     wp_enqueue_style( 'child-style',
         get_stylesheet_directory_uri() . '/style.css',
         array( $parent_style ),

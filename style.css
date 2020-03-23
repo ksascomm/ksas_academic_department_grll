@@ -3,13 +3,17 @@ Theme Name:         KSAS Academic Department: GRLL
 Theme URI:          http://krieger.jhu.edu
 Github Theme URI:   https://github.com/ksascomm/ksas_academic_department_grll
 Description:        Theme for GRLL Department. Child Theme of Academic Department. Built off FoundationPress.
-Version:            1.0.1
+Version:            2.0.0
 Author:             Tim Gelles
 Author URI:         http://krieger.jhu.edu/
 Template:           ksas_academic_department
 License:            MIT License
 License URI:        http://www.opensource.org/licenses/mit-license.php
 */
+
+.hero .full-screen-image .front-hero .caption {
+	bottom: inherit;
+}
 
 .featured-hero .orbit-caption {
     padding: .5rem 0;
@@ -91,4 +95,82 @@ License URI:        http://www.opensource.org/licenses/mit-license.php
 
 .sidebar .sidebar-menu ul.nav li ul.sub-menu {
 	display: inherit;
+}
+
+.program-home .orbit-caption h1 small {
+	font-family: "gentona-bold","Helvetica Neue",Roboto,sans-serif;
+	font-weight: 700;
+	color: #fefefe;
+
+}
+
+.program-home .orbit-caption h1 small span.degree:not(:last-of-type)::after {
+   content: ","
+}
+
+.buckets {
+    display: inherit;
+}
+
+/*
+.buckets .bucket {
+    background: #f4f4f4;
+    border: 1px solid #e5e2e0;
+    box-shadow: none;
+    padding: .75rem;
+}
+
+.buckets .bucket .bucket-title h3 {
+	margin-bottom: 0;
+}
+
+.buckets .bucket a {
+	color: #002d72;
+}
+
+.buckets .bucket a:hover {
+	color: #000;
+}
+
+.buckets .bucket:hover {
+    border: 1px solid  #002d72;
+    color: #000;
+}
+
+.bucket-title {
+	text-align: center;
+}*/
+
+.button-group.bucket {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.bucket .button {
+	background: #c3dcf5;
+    border: 1px solid #e5e2e0;
+    box-shadow: none;
+    padding: .75rem;
+}
+
+.button.single-bucket {
+	margin: .5rem;
+    font-size: 1.5rem;
+}
+
+/* xLarge and up */
+@media screen and (min-width: 74.9375em) {
+	.button.single-bucket {
+		margin-bottom: 0rem;
+	}
+}
+
+.button.single-bucket {
+	   color: #002d72 !important;
+}
+
+.button.single-bucket:hover {
+	border-color: #002d72;
+	  color: #31261d !important;
 }
