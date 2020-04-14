@@ -33,6 +33,7 @@ function create_the_programs() {
 		'public' 			=> true,
 		'show_ui' 			=> true,
 		'hierarchical' 		=> true,
+		'show_in_rest'      => true, // Needed for tax to appear in Gutenberg editor.
 		'show_tagcloud' 	=> false,
 		'show_in_nav_menus' => false,
 		'rewrite' 			=> array('slug' => 'program', 'with_front' => false ),
