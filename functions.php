@@ -53,7 +53,7 @@ function create_the_sidebars() {
 				'description'   => 'This is the ' . $single_name . ' homepage sidebar',
 				'before_widget' => '<aside id="%1$s" class="widget %2$s" aria-label="Sidebar Content %1$s">',
 				'after_widget'  => '</aside>',
-				'before_title'  => '<div class="widget_title" role="heading"><h4>',
+				'before_title'  => '<div class="widget_title"><h4>',
 				'after_title'   => '</h4></div>' 
 				));
 		}
