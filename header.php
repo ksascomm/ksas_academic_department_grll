@@ -25,6 +25,10 @@
 		<?php get_template_part( 'template-parts/grll-script-initiators' ); ?>
 	</head>
 	<body <?php body_class(); ?>>
+	<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VTN64C"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->		
 	<div class="alert" role="navigation" aria-label="COVID-19 Alerts">
     	<a class="alert-message" href="https://krieger.jhu.edu/covid19/">COVID-19 information, resources, and giving opportunities for KSAS</a>
 	</div>
