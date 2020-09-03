@@ -19,7 +19,7 @@
 
 		<meta name="msapplication-config" content="<?php echo get_template_directory_uri(); ?>/dist/assets/images/favicons/browserconfig.xml" />
 		<?php wp_head(); ?>
-		
+		<script src="https://kit.fontawesome.com/ed22ca715b.js" crossorigin="anonymous" defer></script>
 		<?php get_template_part( 'template-parts/analytics' ); ?>
 		<?php get_template_part( 'template-parts/script-initiators' ); ?>
 		<?php get_template_part( 'template-parts/grll-script-initiators' ); ?>
