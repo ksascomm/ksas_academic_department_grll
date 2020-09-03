@@ -30,6 +30,7 @@ get_header(); ?>
                             the_post_thumbnail(
                                 'full', array(
                                 'class' => 'headshot',
+                                'alt' => esc_html ( get_the_title() ),
                                 )
                             );
                             ?>
