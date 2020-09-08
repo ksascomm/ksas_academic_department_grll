@@ -41,11 +41,11 @@
 		<?php foundationpress_entry_meta(); ?>
 	</header>
 
-	<div class="entry-content" itemprop="text">
+	<div class="entry-content">
 		<?php if ( has_post_thumbnail()) : ?>
 			<div class="grid-x">
   				<div class="medium-6 large-3 cell">
-					<?php the_post_thumbnail('medium', array('class'	=> "news-thumb", 'itemprop' => 'image')); ?>
+					<?php the_post_thumbnail(array(200,200), array('class' => 'alignleft news-thumb', 'alt' => esc_html ( get_the_title() ))); ?>
 				</div>
 				<div class="medium-6 large-9 cell">
 					<?php the_excerpt(); ?>
