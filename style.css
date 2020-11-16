@@ -68,6 +68,11 @@ License URI:        http://www.opensource.org/licenses/mit-license.php
     display: inherit;
 }
 
+.sidebar .sidebar-menu ul.nav li.current_page_parent.current_page_ancestor ul.sub-menu li a, .sidebar .sidebar-menu ul.nav li.current_page_item ul.sub-menu li a {
+	font-family: "gentona-bold", "Helvetica Neue", Roboto, sans-serif;
+	font-weight: 700;
+}
+
 .homepage-news time.updated {
     color: inherit;
 	text-transform: inherit;
