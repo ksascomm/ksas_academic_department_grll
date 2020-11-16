@@ -12,7 +12,7 @@ get_header(); ?>
 		$department = str_replace(' ', '%20', $department_unclean);
 		$department = str_replace('&', '%26', $department);
 		$fall = 'fall%202020';
-		//$spring = 'spring%202018';
+		$spring = 'spring%202021';
 		//$intersession = 'intersession%202018';
 		//$summer = 'summer%202018';
 		$open = 'open';
@@ -32,16 +32,16 @@ get_header(); ?>
  
 	//Create API Url calls
 		$courses_fall_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $fall . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;
-		//$courses_spring_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $spring . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;
+		$courses_spring_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $spring . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;
 		//$courses_intersession_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $intersession . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;		
 		//$courses_summer_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $summer . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;
 		$courses_call = array(
 			$courses_fall_url,
-			//$courses_spring_url,
+			$courses_spring_url,
 			//$courses_summer_url,
 			);
 		$courses_call_fall = $courses_fall_url;
-		//$courses_call_spring = $courses_spring_url;
+		$courses_call_spring = $courses_spring_url;
 		//$courses_call_summer = $courses_summer_url;
 	
 	//Course display callback function
@@ -130,6 +130,7 @@ get_header(); ?>
                 <?php get_template_part( 'template-parts/content', 'page' ); ?>
 				<ul class="tabs" data-tabs id="courses-tabs">
 				 	<li class="tabs-title is-active"><a href="#Fall">Fall 2020</a></li>
+				 	<li class="tabs-title"><a href="#Spring">Spring 2021</a></li>
 				</ul>
 				<div class="tabs-content course-listings" data-tabs-content="courses-tabs">
 					 <div class="tabs-panel is-active" id="Fall">
@@ -151,6 +152,25 @@ get_header(); ?>
 							</tbody>
 						</table>
 					 </div>
+					<div class="tabs-panel" id="Spring">
+					 	<p class="show-for-sr" id="tblDescSpring">Column one has the course number and section. Other columns show the course title, days offered, instructor's name, room number, if the course is cross-referenced with another pogram, and a option to view additional course information in a pop-up window.</p>
+					 	<table aria-describedby="tblDescSpring" class="course-table">
+							<thead>
+								<tr>
+									<th>Course # (Section)</th>
+									<th>Title</th>
+									<th>Day/Times</th>
+									<th>Instructor</th>
+									<th>Room</th>
+									<th>PosTag(s)</th>
+									<th>Info</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php $course_curl->get($courses_call_spring, 'parse_courses'); ?>
+							</tbody>
+						</table>
+					 </div>					 
 				</div>	
             <?php endwhile;?>
         </main>
