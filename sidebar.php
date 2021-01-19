@@ -27,7 +27,7 @@
 		<?php elseif(is_page()) :?>
 			<aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation">
 				<div class="sidebar-menu">
-					<h1 class="sidebar-menu-title" id="sidebar-navigation">Also in GRLL</h1>
+					<h1 class="sidebar-menu-title" id="sidebar-navigation">Also in the Department</h1>
 					<?php
 						wp_nav_menu( array( 
 							'theme_location' => 'top-bar-r', 
