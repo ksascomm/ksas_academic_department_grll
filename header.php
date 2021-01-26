@@ -47,7 +47,7 @@
 	<header class="site-header" role="banner" aria-labelledby="dept-info">
 		<div class="site-title-bar title-bar" <?php ksasacademic_title_bar_responsive_toggle(); ?>>
 			<div class="title-bar-left">
-				<button aria-label="<?php _e( 'Main Menu', 'foundationpress' ); ?>" class="menu-icon" type="button" data-toggle="<?php ksasacademic_mobile_menu_id(); ?>"></button>
+				<button aria-label="<?php _e( 'Main Menu', 'ksasacademic' ); ?>" class="menu-icon" type="button" data-toggle="<?php ksasacademic_mobile_menu_id(); ?>"></button>
 				<span class="site-mobile-title title-bar-title">
 					Main Menu
 				</span>
