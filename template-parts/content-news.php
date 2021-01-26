@@ -38,7 +38,7 @@
 				<a href="<?php the_permalink(); ?>" id="post-<?php the_ID(); ?>"><?php the_title(); ?></a>
 			<?php endif;?>
 		</h2>
-		<?php foundationpress_entry_meta(); ?>
+		<?php ksasacademic_entry_meta(); ?>
 	</header>
 
 	<div class="entry-content">

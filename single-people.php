@@ -13,7 +13,7 @@ get_header(); ?>
 <div class="main-container" id="page">
     <div class="main-grid">
         <main class="main-content">
-            <?php do_action('foundationpress_before_content'); ?>
+            <?php do_action('ksasacademic_before_content'); ?>
             <?php
             if (have_posts() ) :
                 while ( have_posts() ) :
@@ -160,7 +160,7 @@ get_header(); ?>
                 <?php endwhile; ?>
             <?php endif; ?>
         </main>
-        <?php do_action('foundationpress_after_content'); ?>
+        <?php do_action('ksasacademic_after_content'); ?>
         <div class="sidebar">
             <aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation-people">
                 <div class="sidebar-menu">

@@ -28,8 +28,8 @@
 			<?php get_template_part( 'template-parts/content-news', get_post_format() ); ?>
          <?php endif; endwhile; ?>
 			<?php
-				if ( function_exists( 'foundationpress_pagination' ) ) :
-					foundationpress_pagination();
+				if ( function_exists( 'ksasacademic_pagination' ) ) :
+					ksasacademic_pagination();
 				elseif ( is_paged() ) :
 				?>
 					<nav id="post-nav">

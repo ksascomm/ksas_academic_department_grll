@@ -29,13 +29,13 @@ get_header(); ?>
 <div class="main-container" id="page">
 	<div class="main-grid">
 		<main class="main-content-full-width">
-			<?php do_action( 'foundationpress_before_content' ); ?>
+			<?php do_action( 'ksasacademic_before_content' ); ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 			<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 				<header aria-label="<?php the_title(); ?>">
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 				</header>
-				<?php do_action( 'foundationpress_page_before_entry_content' ); ?>
+				<?php do_action( 'ksasacademic_page_before_entry_content' ); ?>
 				<div class="entry-content">
 					<?php the_content(); ?>					
 				</div>
@@ -127,7 +127,7 @@ get_header(); ?>
 				</ul>
 			</div>
 		</main>
-		<?php do_action( 'foundationpress_after_content' ); ?>
+		<?php do_action( 'ksasacademic_after_content' ); ?>
 	</div>
 </div>
 <?php get_template_part( 'template-parts/script-initiators' );

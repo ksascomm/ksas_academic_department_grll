@@ -45,9 +45,9 @@
 
 
 	<header class="site-header" role="banner" aria-labelledby="dept-info">
-		<div class="site-title-bar title-bar" <?php foundationpress_title_bar_responsive_toggle(); ?>>
+		<div class="site-title-bar title-bar" <?php ksasacademic_title_bar_responsive_toggle(); ?>>
 			<div class="title-bar-left">
-				<button aria-label="<?php _e( 'Main Menu', 'foundationpress' ); ?>" class="menu-icon" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"></button>
+				<button aria-label="<?php _e( 'Main Menu', 'foundationpress' ); ?>" class="menu-icon" type="button" data-toggle="<?php ksasacademic_mobile_menu_id(); ?>"></button>
 				<span class="site-mobile-title title-bar-title">
 					Main Menu
 				</span>
@@ -83,7 +83,7 @@
 		</div>
 		<nav class="top-bar main-navigation hide-for-print" aria-label="Main Menu">
 			<div class="top-bar-left">
-				<?php foundationpress_top_bar_r(); ?>
+				<?php ksasacademic_top_bar_r(); ?>
 			</div>
 			<div class="top-bar-right hide-for-small-only">
 				<form method="GET" action="<?php echo home_url( '/' ); ?>" role="search" aria-label="Utility Bar Search">
@@ -103,7 +103,7 @@
 		<div class="secondary">
 			<div class="grid-container">
 				<div class="grid-x grid-padding-x">		
-			 		<?php foundationpress_breadcrumb(); ?>
+			 		<?php ksasacademic_breadcrumb(); ?>
 			 	</div>
 			 </div>
 		</div>
