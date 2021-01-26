@@ -2,8 +2,8 @@
 /**
  * The default template for displaying news content on homepage (meta fields are above the permalink; contains external link class; categories NOT shown)
  *
- * @package FoundationPress
- * @since FoundationPress 1.0.0
+ * @package KSASAcademicDepartment
+ * @since KSASAcademicDepartment 1.0.0
  */
 
 ?>
