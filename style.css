@@ -11,10 +11,6 @@ License:            MIT License
 License URI:        http://www.opensource.org/licenses/mit-license.php
 */
 
-.hero .full-screen-image .front-hero .caption {
-	bottom: inherit;
-}
-
 .featured-hero .orbit-caption {
     padding: .5rem 0;
     background: rgba(0,0,0,.75);
