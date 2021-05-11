@@ -4,11 +4,11 @@ Description: Used to style the content editor in posts and pages
 
 @font-face {
   font-family: "quadon-bold";
-  src: url("../dist/assets/fonts/quadon/Quadon-Bold.eot");
-  src: url("../dist/assets/fonts/quadon/Quadon-Bold.eot?#iefix")
+  src: url("../../ksas_academic_department/dist/assets/fonts/quadon/Quadon-Bold.eot");
+  src: url("../../ksas_academic_department/dist/assets/fonts/quadon/Quadon-Bold.eot?#iefix")
       format("embedded-opentype"),
-    url("../dist/assets/fonts/quadon/Quadon-Bold.woff") format("woff"),
-    url("../dist/assets/fonts/quadon/Quadon-Bold.ttf") format("truetype");
+    url("../../ksas_academic_department/dist/assets/fonts/quadon/Quadon-Bold.woff") format("woff"),
+    url("../../ksas_academic_department/dist/assets/fonts/quadon/Quadon-Bold.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -16,11 +16,11 @@ Description: Used to style the content editor in posts and pages
 
 @font-face {
   font-family: "gentona-light";
-  src: url("../dist/assets/fonts/gentona/Gentona-Light.eot");
-  src: url("../dist/assets/fonts/gentona/Gentona-Light.eot?#iefix")
+  src: url("../../ksas_academic_department/dist/assets/fonts/gentona/Gentona-Light.eot");
+  src: url("../../ksas_academic_department/dist/assets/fonts/gentona/Gentona-Light.eot?#iefix")
       format("embedded-opentype"),
-    url("../dist/assets/fonts/gentona/Gentona-Light.woff") format("woff"),
-    url("../dist/assets/fonts/gentona/Gentona-Light.ttf") format("truetype");
+    url("../../ksas_academic_department/dist/assets/fonts/gentona/Gentona-Light.woff") format("woff"),
+    url("../../ksas_academic_department/dist/assets/fonts/gentona/Gentona-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -28,11 +28,11 @@ Description: Used to style the content editor in posts and pages
 
 @font-face {
   font-family: "gentona-semibold";
-  src: url("../dist/assets/fonts/gentona/Gentona-SemiBold.eot");
-  src: url("../dist/assets/fonts/gentona/Gentona-SemiBold.eot?#iefix")
+  src: url("../../ksas_academic_department/dist/assets/fonts/gentona/Gentona-SemiBold.eot");
+  src: url("../../ksas_academic_department/dist/assets/fonts/gentona/Gentona-SemiBold.eot?#iefix")
       format("embedded-opentype"),
-    url("../dist/assets/fonts/gentona/Gentona-SemiBold.woff") format("woff"),
-    url("../dist/assets/fonts/gentona/Gentona-SemiBold.ttf") format("truetype");
+    url("../../ksas_academic_department/dist/assets/fonts/gentona/Gentona-SemiBold.woff") format("woff"),
+    url("../../ksas_academic_department/dist/assets/fonts/gentona/Gentona-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
