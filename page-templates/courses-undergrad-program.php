@@ -12,15 +12,15 @@ get_header(); ?>
 	$department_unclean = $theme_option['flagship_sub_isis_name'];
 	$department         = str_replace( ' ', '%20', $department_unclean );
 	$department         = str_replace( '&', '%26', $department );
-	$spring             = 'spring%202021';
+	$fall               = 'fall%202021';
 	$open               = 'open';
 	$approval           = 'approval%20required';
 	$closed             = 'closed';
 	$waitlist           = 'waitlist%20only';
 	$reserved_open      = 'reserved%20open';
 	$key                = '0jCaUO1bHwbG1sFEKQd3iXgBgxoDUOhR';
-	$program_slug = get_the_program_slug($post);
-	$subdepartment = $program_slug;
+	$program_slug       = get_the_program_slug($post);
+	$subdepartment      = $program_slug;
 
 	// Create first Zebra Curl class.
 	$course_curl = new Zebra_cURL();
@@ -34,14 +34,14 @@ get_header(); ?>
 	$course_curl->cache( get_stylesheet_directory() . '/sis-cache/', 1209600 );
 
 	// Create API Url calls.
-	$courses_spring_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $spring . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;
+	$courses_fall_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $fall . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;
 
 	$course_data = array();
 	$output      = '';
 
 	// get the first set of data.
 	$course_curl->get(
-		$courses_spring_url,
+		$courses_fall_url,
 		function( $result ) use ( &$course_data ) {
 
 			$key = '0jCaUO1bHwbG1sFEKQd3iXgBgxoDUOhR';
@@ -125,12 +125,12 @@ get_header(); ?>
 							<?php get_template_part( 'template-parts/content', 'page' ); ?>
 					<?php endwhile;?>	
 				<ul class="tabs" data-tabs id="courses-tabs">
-					<li class="tabs-title is-active"><a href="#Spring">Spring 2021</a></li>
+					<li class="tabs-title is-active"><a href="#Fall">Fall 2021</a></li>
 				</ul>
 				<div class="tabs-content course-listings" data-tabs-content="courses-tabs">
-					<div class="tabs-panel is-active" id="Spring">
-						<p class="show-for-sr" id="tblDescSpring">Column one has the course number and section. Other columns show the course title, days offered, instructor's name, room number, if the course is cross-referenced with another program, and a option to view additional course information in a pop-up window.</p>
-						<table aria-describedby="tblDescSpring" class="course-table">
+					<div class="tabs-panel is-active" id="Fall">
+						<p class="show-for-sr" id="tblDescFall">Column one has the course number and section. Other columns show the course title, days offered, instructor's name, room number, if the course is cross-referenced with another program, and a option to view additional course information in a pop-up window.</p>
+						<table aria-describedby="tblDescFall" class="course-table">
 							<thead>
 								<tr>
 									<th>Course # (Section)</th>
