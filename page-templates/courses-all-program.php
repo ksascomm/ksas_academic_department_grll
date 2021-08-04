@@ -1,7 +1,12 @@
 <?php
-/*
-Template Name: SIS Courses (MLL Program: All Levels)
-*/
+/**
+ * Template Name: SIS Courses (MLL Program: All Levels)
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package KSAS_Academic_Department
+ */
+
 get_header(); ?>
 <?php get_template_part( 'template-parts/featured-image' ); ?>
 <?php
@@ -14,6 +19,7 @@ get_header(); ?>
 	$department         = str_replace( ' ', '%20', $department_unclean );
 	$department         = str_replace( '&', '%26', $department );
 	$fall               = 'fall%202021';
+	$spring             = 'spring%202021';
 	$open               = 'open';
 	$approval           = 'approval%20required';
 	$closed             = 'closed';
@@ -35,7 +41,7 @@ get_header(); ?>
 	$course_curl->cache( get_stylesheet_directory() . '/sis-cache/', 1209600 );
 
 	// Create API Url calls.
-	$courses_fall_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $fall . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;
+	$courses_fall_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $spring . '&Term=' . $fall . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment;
 
 	$course_data = array();
 	$output      = '';
@@ -95,9 +101,11 @@ get_header(); ?>
 			$section_number      = $result->body[0]->{'SectionName'};
 			$instructor          = $result->body[0]->{'InstructorsFullName'};
 			$course_level        = $result->body[0]->{'Level'};
+			$location            = $result->body[0]->{'Location'};
 			$description         = $result->body[0]->{'SectionDetails'}[0]->{'Description'};
 			$room                = $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[0]->{'Building'};
 			$roomnumber          = $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[0]->{'Room'};
+			$dates               = $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[0]->{'Dates'};
 			$postag              = ' ';
 			$sectiondetails      = $result->body[0]->{'SectionDetails'}[0];
 			$tags                = [];
@@ -113,11 +121,11 @@ get_header(); ?>
 
 			$print_tags = empty( $tags ) ? 'n/a' : implode( ', ', $tags );
 
-			$output .= '<tr><td>' . $course_number . '&nbsp;(' . $section_number . ')</td><td>' . $title . '</td><td class="show-for-medium">' . $meetings . '</td><td class="show-for-medium">' . $instructor . '</td><td class="show-for-medium">' . $room . '&nbsp;' . $roomnumber . '</td><td class="show-for-large">' . implode( ', ', $tags ) . '</td>';
+			$output .= '<tr><td>' . $course_number . '&nbsp;(' . $section_number . ')</td><td>' . $title . '</td><td class="show-for-medium">' . $meetings . '</td><td class="show-for-medium">' . $instructor . '</td><td class="show-for-medium">' . $location . '</td><td class="show-for-large">' . $term . '</td>';
 
-			$output .= '<td><button class="button course-details" data-open="course-' . $clean_course_number . $section_number . $clean_term . '">More Info<span class="show-for-sr">-' . $title . '-' . $section_number . '</span></button></td></tr>';
+			$output .= '<td><button class="button course-details" data-open="course-' . $clean_course_number . $section_number . $clean_term . '">Course Details<span class="show-for-sr">-' . $title . '-' . $section_number . '</span></button></td></tr>';
 
-			$output .= '<div class="reveal course-description" id="course-' . $clean_course_number . $section_number . $clean_term . '" aria-labelledby="' . $clean_term . $course_number . '-' . $section_number . '" data-reveal><h1 id="' . $clean_term . $course_number . '-' . $section_number . '">' . $title . '<br><small>' . $course_number . '&nbsp;(' . $section_number . ')</small></h1><p>' . $description . '<ul><li><strong>Credits:</strong> ' . $credits . '</li><li><strong>Level:</strong> ' . $course_level . ' </li><li><strong>Days/Times:</strong> ' . $meetings . ' </li><li><strong>Instructor:</strong> ' . $instructor . ' </li><li><strong>Room:</strong> ' . $room . '&nbsp;' . $roomnumber . '  </li><li><strong>Status:</strong> ' . $status . '</li><li><strong>Seats Available:</strong> ' . $seatsavailable . '</li><li><strong>PosTag(s):</strong> ' . $print_tags . '</li></ul></p><button class="close-button" data-close aria-label="Close reveal" type="button"><span aria-hidden="true">&times;</span></button></div>';
+			$output .= '<div class="reveal course-description" id="course-' . $clean_course_number . $section_number . $clean_term . '" aria-labelledby="' . $clean_term . $course_number . '-' . $section_number . '" data-reveal><h1 id="' . $clean_term . $course_number . '-' . $section_number . '">' . $title . '<br><small>' . $course_number . '&nbsp;(' . $section_number . ')</small></h1><p>' . $description . '<ul><li><strong>Credits:</strong> ' . $credits . '</li><li><strong>Level:</strong> ' . $course_level . ' </li><li><strong>Days/Times:</strong> ' . $meetings . '&nbsp;' . $dates . ' </li><li><strong>Instructor:</strong> ' . $instructor . ' </li><li><strong>Room:</strong> ' . $room . '&nbsp;' . $roomnumber . '</li><li><strong>Status:</strong> ' . $status . '</li><li><strong>Seats Available:</strong> ' . $seatsavailable . '</li><li><strong>PosTag(s):</strong> ' . $print_tags . '</li></ul></p><button class="close-button" data-close aria-label="Close reveal" type="button"><span aria-hidden="true">&times;</span></button></div>';
 		}
 	);
 	?>
@@ -125,32 +133,30 @@ get_header(); ?>
 <div class="main-container" id="page">
 	<div class="main-grid">
 			<main class="main-content">
-					<?php while ( have_posts() ) : the_post(); ?>
-							<?php get_template_part( 'template-parts/content', 'page' ); ?>
-					<?php endwhile; ?>	
-				<ul class="tabs" data-tabs id="courses-tabs">
-					<li class="tabs-title is-active"><a href="#Fall">Fall 2021</a></li>
-				</ul>
-				<div class="tabs-content course-listings" data-tabs-content="courses-tabs">
-					<div class="tabs-panel is-active" id="Fall">
-						<p class="show-for-sr" id="tblDescFall">Column one has the course number and section. Other columns show the course title, days offered, instructor's name, room number, if the course is cross-referenced with another program, and a option to view additional course information in a pop-up window.</p>
-						<table aria-describedby="tblDescFall" class="course-table">
-							<thead>
-								<tr>
-									<th>Course # (Section)</th>
-									<th>Title</th>
-									<th class="show-for-medium">Day/Times</th>
-									<th class="show-for-medium">Instructor</th>
-									<th class="show-for-medium">Room</th>
-									<th class="show-for-large">PosTag(s)</th>
-									<th>Info</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php echo ( $output ); ?>
-							</tbody>
-						</table>
-					</div>
+				<?php
+				while ( have_posts() ) :
+					the_post();
+					?>
+					<?php get_template_part( 'template-parts/content', 'page' ); ?>
+				<?php endwhile; ?>	
+				<div class="course-listings all-courses">
+					<p class="show-for-sr" id="tblDescfall">Column one has the course number and section. Other columns show the course title, days offered, instructor's name, room number, if the course is cross-referenced with another program, and a option to view additional course information in a pop-up window.</p>
+					<table aria-describedby="tblDescfall" class="course-table">
+						<thead>
+							<tr>
+								<th>Course # (Section)</th>
+								<th>Title</th>
+								<th class="show-for-medium">Day/Times</th>
+								<th class="show-for-medium">Instructor</th>
+								<th class="show-for-medium">Location</th>
+								<th class="show-for-medium">Term</th>
+								<th>Course Details</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php echo ( $output ); ?>
+						</tbody>
+					</table>
 				</div>
 			</main>
 			<?php get_sidebar(); ?>
