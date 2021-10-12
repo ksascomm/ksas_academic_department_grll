@@ -309,3 +309,58 @@ function create_page_title_grll() {
 	}
 	return $page_title;
 }
+
+
+/** Disable Parent Theme custom <title> filter */
+function remove_parent_page_title() {
+	remove_filter( 'pre_get_document_title', 'custom_ksasacademic_page_title', 9999 );
+}
+add_action( 'after_setup_theme', 'remove_parent_page_title' );
+
+/**
+ * Add custom text to <title> using child theme specific pre_get_document_title hook
+ */
+function custom_ksasacademic_mll_page_title( $title ) {
+	$post         = get_queried_object_id();
+	$program_slug = get_the_program_slug( $post );
+	$program_name = get_the_program_name( $post );
+	if ( is_front_page() && is_home() ) {
+		$title = get_bloginfo( 'description' ) . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		return $title;
+	} elseif ( is_front_page() ) {
+				$title = get_bloginfo( 'description' ) . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		return $title;
+	} elseif ( is_home() ) {
+		$title = get_the_title( get_option( 'page_for_posts', true ) ) . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		return $title;
+	} elseif ( is_category() ) {
+		$title = single_cat_title( '', false ) . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		return $title;
+	} elseif ( is_author() ) {
+		global $post;
+		$title = get_the_author_meta( 'display_name', $post->post_author ) . ' Author Archives | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		return $title;
+	} elseif ( is_archive() ) {
+		$title = single_cat_title( '', false ) . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		return $title;
+	} elseif ( is_single() ) {
+		$title = get_the_title() . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		return $title;
+	} elseif ( is_page() && ! is_page_template( 'page-templates/program-homepage.php' ) ) {
+		$title = get_the_title() .' | ' . $program_name . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		return $title;
+	} elseif ( is_404() ) {
+		$title = 'Page Not Found | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		return $title;
+	} elseif ( is_page() && is_page_template( 'page-templates/program-homepage.php' ) ) {
+		$title = $program_name . ' Program | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		return $title;
+	} elseif ( is_tax( 'bbtype' ) ) {
+		$title = single_tag_title( '', false ) . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		return $title;
+	} else {
+		return $title;
+	}
+}
+
+add_filter( 'pre_get_document_title', 'custom_ksasacademic_mll_page_title', 99999 );
