@@ -1,4 +1,18 @@
 <?php
+/**
+ * Custom theme functions for MLL child theme
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package KSASAcademicDepartment
+ */
+
+add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+	/**
+	 * Sets up styles and scripts for this child theme
+	 *
+	 * Note that this function is hooked into the wp_enqueue_scripts
+	 */
 function my_theme_enqueue_styles() {
 	$parent_style = 'main-stylesheet';
 	wp_enqueue_style( $parent_style, get_template_directory_uri() . '/dist/assets/css/app.css', array(), filemtime( get_template_directory() . '/src/assets/scss' ), 'all' );
@@ -10,8 +24,12 @@ function my_theme_enqueue_styles() {
 	);
 }
 
-add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 
+/**
+ * Create the custom Programs taxonomy
+ *
+ * @return void
+ */
 function create_the_programs() {
 	$labels = array(
 		'name'               => _x( 'Programs', 'taxonomy general name' ),
@@ -45,6 +63,12 @@ function create_the_programs() {
 	register_taxonomy( 'program', $pages, $args );
 }
 add_action( 'init', 'create_the_programs' );
+
+/**
+ * Create the custom sidebars for each Program taxonomy
+ *
+ * @return void
+ */
 function create_the_sidebars() {
 	if ( function_exists( 'register_sidebar' ) ) {
 		$all_programs = get_terms( 'program', array( 'hide_empty' => 0 ) );
@@ -67,12 +91,9 @@ function create_the_sidebars() {
 }
 add_action( 'init', 'create_the_sidebars' );
 
-add_action( 'after_setup_theme', 'academic_grll_theme_support', 11 );
-
-function academic_grll_theme_support() {
-	remove_theme_support( 'custom-background' );
-}
-
+/**
+ * Remove unused sidebars that appear in Parent theme
+ */
 function remove_unused_sidebars() {
 		unregister_sidebar( 'page-sb' );
 		unregister_sidebar( 'graduate-sb' );
@@ -81,10 +102,12 @@ function remove_unused_sidebars() {
 }
 add_action( 'widgets_init', 'remove_unused_sidebars', 11 );
 
-
+/**
+ * Gret the program slug for future use
+ */
 function get_the_program_slug( $post ) {
-	$post        = get_queried_object_id();
-		$program = '';
+	$post    = get_queried_object_id();
+	$program = '';
 	if ( is_page() && ! is_page_template( 'page-templates/program-homepage.php' ) ) {
 		/* Get an array of Ancestors and Parents if they exist */
 		$parents = get_post_ancestors( $post );
@@ -108,7 +131,7 @@ function get_the_program_slug( $post ) {
 			foreach ( $terms as $term ) {
 				$term_names[] = $term->slug;
 			}
-			 $program = implode( ' ', $term_names );
+			$program = implode( ' ', $term_names );
 		} else {
 			$program = $terms->slug; }
 	} elseif ( is_singular( 'people' ) ) {
@@ -118,15 +141,18 @@ function get_the_program_slug( $post ) {
 			foreach ( $terms as $term ) {
 				$term_names[] = $term->slug;
 			}
-			 $program = implode( ' ', $term_names );
+			$program = implode( ' ', $term_names );
 		} else {
 			$program = $terms->slug; }
 	}
 	return $program;
 }
 
+/**
+ * Get the program name for future use
+ */
 function get_the_program_name( $post ) {
-	wp_reset_query();
+	wp_reset_postdata();
 	$post    = get_queried_object_id();
 	$program = '';
 	if ( is_page() && ! is_page_template( 'page-templates/program-homepage.php' ) ) {
@@ -153,7 +179,7 @@ function get_the_program_name( $post ) {
 			foreach ( $terms as $term ) {
 				$term_names[] = $term->name;
 			}
-			 $program = implode( ' ', $term_names );
+			$program = implode( ' ', $term_names );
 		} else {
 			$program = $terms->slug; }
 	} elseif ( is_singular( 'people' ) ) {
@@ -163,13 +189,16 @@ function get_the_program_name( $post ) {
 			foreach ( $terms as $term ) {
 				$term_names[] = $term->name;
 			}
-			 $program = implode( '', $term_names );
+			$program = implode( '', $term_names );
 		} else {
 			$program = $terms->name; }
 	}
 	return $program;
 }
 
+/**
+ * Add program columns to wp-admin
+ */
 function add_program_columns( $columns ) {
 	unset( $columns['author'] );
 	unset( $columns['comments'] );
@@ -182,6 +211,9 @@ add_filter( 'manage_post_posts_columns', 'add_program_columns' );
 
 add_action( 'manage_posts_custom_column', 'custompost_columns', 10, 2 );
 
+/**
+ * Add program columns to wp-admin
+ */
 function custompost_columns( $column, $post_id ) {
 	switch ( $column ) {
 		case 'program':
@@ -196,16 +228,16 @@ function custompost_columns( $column, $post_id ) {
 	}
 }
 
-// CREATE FILTERS WITH CUSTOM TAXONOMIES
-
-
+/**
+ * Create filters from custom Program taxonomy
+ */
 function post_program_add_taxonomy_filters() {
 	global $typenow;
 
-	// An array of all the taxonomyies you want to display. Use the taxonomy name or slug
+	// An array of all the taxonomyies you want to display. Use the taxonomy name or slug.
 	$taxonomies = array( 'program' );
 
-	// must set this to the post type you want the filter(s) displayed on
+	// must set this to the post type you want the filter(s) displayed on.
 	if ( $typenow == 'post' ) {
 
 		foreach ( $taxonomies as $tax_slug ) {
@@ -227,90 +259,6 @@ function post_program_add_taxonomy_filters() {
 
 add_action( 'restrict_manage_posts', 'post_program_add_taxonomy_filters' );
 
-function create_page_title_grll() {
-	$post         = get_queried_object_id();
-	$program_slug = get_the_program_slug( $post );
-	$program_name = get_the_program_name( $post );
-	if ( is_front_page() ) {
-		$page_title  = bloginfo( 'description' );
-		$page_title .= print( ' ' );
-		$page_title .= bloginfo( 'name' );
-		$page_title .= print( ' | Johns Hopkins University' );
-	} elseif ( is_home() ) { // blog page
-		$page_title  = single_post_title();
-		$page_title .= print( ' | ' );
-		if ( ! empty( $program_slug ) ) {
-			$page_title .= print( $program_name );
-			$page_title .= print( ' | ' );
-		} else {
-			$page_title .= print( ' | ' );
-		}
-		$page_title .= print( ' ' );
-		$page_title .= bloginfo( 'name' );
-		$page_title .= print( ' | Johns Hopkins University' );
-	} elseif ( is_category() ) {
-		$page_title  = single_cat_title();
-		$page_title .= print( ' | ' );
-		if ( ! empty( $program_slug ) ) {
-			$page_title .= print( $program_name );
-			$page_title .= print( ' | ' );
-		} else {
-			$page_title .= print( ' | ' );
-		}
-		$page_title .= bloginfo( 'description' );
-		$page_title .= print( ' ' );
-		$page_title .= bloginfo( 'name' );
-		$page_title .= print( ' | Johns Hopkins University' );
-
-	} elseif ( is_single() ) {
-		$page_title  = single_post_title();
-		$page_title .= print( ' | ' );
-		if ( ! empty( $program_slug ) ) {
-			$page_title .= print( $program_name );
-			$page_title .= print( ' | ' );
-		} else {
-			$page_title .= print( ' | ' );
-		}
-		$page_title .= bloginfo( 'description' );
-		$page_title .= print( ' ' );
-		$page_title .= bloginfo( 'name' );
-		$page_title .= print( ' | Johns Hopkins University' );
-	} elseif ( is_page() && ! is_page_template( 'page-templates/program-homepage.php' ) ) {
-		$page_title = single_post_title();
-		if ( ! empty( $program_slug ) ) {
-			$page_title .= print( ' | ' );
-			$page_title .= print( $program_name );
-			$page_title .= print( ' | ' );
-		} else {
-			$page_title .= print( ' | ' );
-		}
-		$page_title .= print( ' ' );
-		$page_title .= bloginfo( 'name' );
-		$page_title .= print( ' | Johns Hopkins University' );
-	} elseif ( is_page() && is_page_template( 'page-templates/program-homepage.php' ) ) {
-		$page_title  = print( $program_name );
-		$page_title .= print( ' Program | ' );
-		$page_title .= bloginfo( 'description' );
-		$page_title .= print( ' ' );
-		$page_title .= bloginfo( 'name' );
-		$page_title .= print( ' | Johns Hopkins University' );
-	} elseif ( is_404() ) {
-		$page_title  = print( 'Page Not Found' );
-		$page_title .= print( ' | ' );
-		$page_title .= bloginfo( 'description' );
-		$page_title .= print( ' ' );
-		$page_title .= bloginfo( 'name' );
-		$page_title .= print( ' | Johns Hopkins University' );
-	} else {
-		$page_title  = bloginfo( 'description' );
-		$page_title .= print( ' ' );
-		$page_title .= bloginfo( 'name' );
-		$page_title .= print( ' | Johns Hopkins University' );
-	}
-	return $page_title;
-}
-
-
 /** Disable Parent Theme custom <title> filter */
 function remove_parent_page_title() {
 	remove_filter( 'pre_get_document_title', 'custom_ksasacademic_page_title', 9999 );
@@ -325,10 +273,10 @@ function custom_ksasacademic_mll_page_title( $title ) {
 	$program_slug = get_the_program_slug( $post );
 	$program_name = get_the_program_name( $post );
 	if ( is_front_page() && is_home() ) {
-		$title = get_bloginfo( 'description' ) . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		$title = get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 		return $title;
 	} elseif ( is_front_page() ) {
-				$title = get_bloginfo( 'description' ) . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+				$title = get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 		return $title;
 	} elseif ( is_home() ) {
 		$title = get_the_title( get_option( 'page_for_posts', true ) ) . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
@@ -347,13 +295,18 @@ function custom_ksasacademic_mll_page_title( $title ) {
 		$title = get_the_title() . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 		return $title;
 	} elseif ( is_page() && ! is_page_template( 'page-templates/program-homepage.php' ) ) {
-		$title = get_the_title() .' | ' . $program_name . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		if ( ! empty( $program_name ) ) :
+			$title = get_the_title() . ' | ' . $program_name . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+			return $title;
+		else :
+			$title = get_the_title() . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+			return $title;
+		endif;
+	} elseif ( is_page() && is_page_template( 'page-templates/program-homepage.php' ) ) {
+		$title = $program_name . ' Program | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 		return $title;
 	} elseif ( is_404() ) {
 		$title = 'Page Not Found | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
-		return $title;
-	} elseif ( is_page() && is_page_template( 'page-templates/program-homepage.php' ) ) {
-		$title = $program_name . ' Program | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 		return $title;
 	} elseif ( is_tax( 'bbtype' ) ) {
 		$title = single_tag_title( '', false ) . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
