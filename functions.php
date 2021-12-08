@@ -279,8 +279,14 @@ function custom_ksasacademic_mll_page_title( $title ) {
 				$title = get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 		return $title;
 	} elseif ( is_home() ) {
-		$title = get_the_title( get_option( 'page_for_posts', true ) ) . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
-		return $title;
+		if ( is_paged() ) {
+			$page_number = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+			$title       = get_the_title( get_option( 'page_for_posts', true ) ) . ' Page ' . $page_number . ' | ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+			return $title;
+		} else {
+			$title = get_the_title( get_option( 'page_for_posts', true ) ) . ' | ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+			return $title;
+		}
 	} elseif ( is_category() ) {
 		$title = single_cat_title( '', false ) . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 		return $title;
@@ -289,8 +295,14 @@ function custom_ksasacademic_mll_page_title( $title ) {
 		$title = get_the_author_meta( 'display_name', $post->post_author ) . ' Author Archives | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 		return $title;
 	} elseif ( is_archive() ) {
+		if ( is_paged() ) {
+			$page_number = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+			$title       = single_cat_title( '', false ) . ' Archive Page ' . $page_number . ' | ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+			return $title;
+		} else {
 		$title = single_cat_title( '', false ) . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 		return $title;
+		}
 	} elseif ( is_single() ) {
 		$title = get_the_title() . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 		return $title;
