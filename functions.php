@@ -44,7 +44,7 @@ function create_the_programs() {
 		'not_found_in_trash' => __( 'No Program found in Trash' ),
 	);
 
-	$pages = array( 'courses', 'profile', 'post', 'slider', 'bulletinboard', 'page' );
+	$pages = array( 'courses', 'profile', 'post', 'slider', 'bulletinboard', 'page', 'faculty-books' );
 
 	$args = array(
 		'labels'            => $labels,
