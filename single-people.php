@@ -146,7 +146,7 @@ get_header(); ?>
 						<?php endif; ?>
 						<?php
 						if ( get_post_meta( $post->ID, 'ecpt_books_cond', true ) == 'on' ) :
-							locate_template( 'template-parts/faculty-books.php', true, false );
+							locate_template( 'template-parts/faculty-books-tabbed.php', true, false );
 						endif;
 						?>
 						<?php if ( get_post_meta( $post->ID, 'ecpt_extra_tab', true ) ) : ?>
