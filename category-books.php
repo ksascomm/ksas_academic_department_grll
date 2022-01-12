@@ -38,7 +38,6 @@ endif;
 				$faculty_book_query = new WP_Query(
 					array(
 						'post_type'      => 'faculty-books',
-						'category_name'  => 'books',
 						'posts_per_page' => 100,
 						'tax_query'      => array(
 							array(
