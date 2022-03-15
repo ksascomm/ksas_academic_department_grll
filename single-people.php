@@ -47,12 +47,12 @@ get_header(); ?>
 								<h3><?php echo wp_kses_post( get_post_meta( $post->ID, 'ecpt_degrees', true ) ); ?></h3>
 						<?php endif; ?>
 						<p class="listing">
-							<span class="fa fa-flag"></span> Program: <?php echo esc_html( $program_name ); ?><br>
+							<span class="fa-regular fa-language"></span> Program: <?php echo esc_html( $program_name ); ?><br>
 							<?php
 							if ( get_post_meta( $post->ID, 'ecpt_email', true ) ) :
 									$email = get_post_meta( $post->ID, 'ecpt_email', true );
 								?>
-								<span class="fa fa-envelope" aria-hidden="true"></span>
+								<span class="fa-solid fa-envelope" aria-hidden="true"></span>
 									<?php if ( function_exists( 'email_munge' ) ) : ?>
 									<a class="munge" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;<?php echo email_munge( $email ); ?>">
 										<?php echo email_munge( $email ); ?>
@@ -63,37 +63,34 @@ get_header(); ?>
 									<br>
 								<?php endif; ?>
 								<?php if ( get_field( 'ecpt_cv' ) ) : ?>
-								<span class="fas fa-file-pdf" aria-hidden="true"></span> <a href="<?php the_field( 'ecpt_cv' ); ?>">Curriculum Vitae</a><br>
+								<span class="fa-solid fa-file-pdf" aria-hidden="true"></span> <a href="<?php the_field( 'ecpt_cv' ); ?>">Curriculum Vitae</a><br>
 								<?php endif; ?>
 								<?php
 								$file = get_field( 'cv_file' );
 								if ( $file ) :
 									?>
-								<span class="fas fa-file-pdf" aria-hidden="true"></span> <a href="<?php echo esc_url( $file['url'] ); ?>">Curriculum Vitae</a><br>
+								<span class="fa-solid fa-file-pdf" aria-hidden="true"></span> <a href="<?php echo esc_url( $file['url'] ); ?>">Curriculum Vitae</a><br>
 								<?php endif; ?>
 								<?php if ( get_post_meta( $post->ID, 'ecpt_office', true ) ) : ?>
-								<span class="fa fa-map-marker-alt" aria-hidden="true"></span> <?php echo esc_html( get_post_meta( $post->ID, 'ecpt_office', true ) ); ?><br>
+								<span class="fa-solid fa-location-dot" aria-hidden="true"></span> <?php echo esc_html( get_post_meta( $post->ID, 'ecpt_office', true ) ); ?><br>
 								<?php endif; ?>
 								<?php if ( get_post_meta( $post->ID, 'ecpt_hours', true ) ) : ?>
-								<span class="fa fa-calendar" aria-hidden="true"></span> <?php echo esc_html( get_post_meta( $post->ID, 'ecpt_hours', true ) ); ?><br>
+								<span class="fa-solid fa-calendar-check" aria-hidden="true"></span> <?php echo esc_html( get_post_meta( $post->ID, 'ecpt_hours', true ) ); ?><br>
 								<?php endif; ?>
 								<?php if ( get_post_meta( $post->ID, 'ecpt_phone', true ) ) : ?>
-								<span class="fa fa-phone-square" aria-hidden="true"></span> <?php echo esc_html( get_post_meta( $post->ID, 'ecpt_phone', true ) ); ?><br>
+								<span class="fa-solid fa-phone-office" aria-hidden="true"></span> <?php echo esc_html( get_post_meta( $post->ID, 'ecpt_phone', true ) ); ?><br>
 								<?php endif; ?>
 								<?php if ( get_post_meta( $post->ID, 'ecpt_website', true ) ) : ?>
-								<span class="fa fa-globe" aria-hidden="true"></span> <a href="<?php echo esc_url( get_post_meta( $post->ID, 'ecpt_website', true ) ); ?>" target="_blank">Personal Website</a><br>
+								<span class="fa-solid fa-earth-americas" aria-hidden="true"></span> <a href="<?php echo esc_url( get_post_meta( $post->ID, 'ecpt_website', true ) ); ?>" target="_blank">Personal Website</a><br>
 								<?php endif; ?>
 								<?php if ( get_post_meta( $post->ID, 'ecpt_lab_website', true ) ) : ?>
-								<span class="fa fa-globe" aria-hidden="true"></span> <a href="<?php echo esc_url( get_post_meta( $post->ID, 'ecpt_lab_website', true ) ); ?>" target="_blank">Group/Lab Website</a><br>
+								<span class="fa-solid fa-earth-americas" aria-hidden="true"></span> <a href="<?php echo esc_url( get_post_meta( $post->ID, 'ecpt_lab_website', true ) ); ?>" target="_blank">Group/Lab Website</a><br>
 								<?php endif; ?>
 								<?php if ( get_post_meta( $post->ID, 'ecpt_google_id', true ) ) : ?>
-								<span class="fab fa-google"></span> <a href="http://scholar.google.com/citations?user=<?php echo esc_html( get_post_meta( $post->ID, 'ecpt_google_id', true ) ); ?>" target="_blank">Google Scholar Profile</a><br>
-								<?php endif; ?>
-								<?php if ( get_post_meta( $post->ID, 'ecpt_orcid_id', true ) ) : ?>
-								<span class="fas fa-user"></span> <a href="http://orcid.org/<?php echo esc_html( get_post_meta( $post->ID, 'ecpt_orcid_id', true ) ); ?>" target="_blank">ORCID Profile</a><br>
+								<span class="fa-brands fa-google"></span> <a href="http://scholar.google.com/citations?user=<?php echo esc_html( get_post_meta( $post->ID, 'ecpt_google_id', true ) ); ?>" target="_blank">Google Scholar Profile</a><br>
 								<?php endif; ?>
 								<?php if ( get_post_meta( $post->ID, 'ecpt_twitter', true ) ) : ?>
-								<span class="fab fa-twitter"></span> <a href="https://twitter.com/<?php echo esc_html( get_post_meta( $post->ID, 'ecpt_twitter', true ) ); ?>" target="_blank"> @<?php echo esc_html( get_post_meta( $post->ID, 'ecpt_twitter', true ) ); ?></a>
+								<span class="fa-brands fa-twitter"></span> <a href="https://twitter.com/<?php echo esc_html( get_post_meta( $post->ID, 'ecpt_twitter', true ) ); ?>" target="_blank"> @<?php echo esc_html( get_post_meta( $post->ID, 'ecpt_twitter', true ) ); ?></a>
 								<?php endif; ?>
 						</p>
 					</div>

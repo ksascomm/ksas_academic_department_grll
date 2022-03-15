@@ -171,7 +171,7 @@ get_header(); ?>
 				<div class="homepage-news-archive" role="region" aria-labelledby="region1">			
 					<h4 id="region1">
 						<a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>">
-							View <?php echo esc_html( $theme_option['flagship_sub_feed_name'] ); ?> Archive <span class="fa fa-chevron-circle-right" aria-hidden="true"></span>
+							View <?php echo esc_html( $theme_option['flagship_sub_feed_name'] ); ?> Archive <span class="fa-solid fa-circle-chevron-right" aria-hidden="true"></span>
 						</a>
 					</h4>
 				</div>

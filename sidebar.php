@@ -110,7 +110,6 @@ endif;
 						while ( $jump_menu_query->have_posts() ) :
 							$jump_menu_query->the_post();
 							?>
-											
 							<option value="<?php the_permalink(); ?>"><?php the_title(); ?></option>
 						<?php endwhile; ?>
 					</select>

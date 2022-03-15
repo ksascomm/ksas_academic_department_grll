@@ -87,7 +87,7 @@ endif;
 						</label>
 						<div class="input-group">
 							<span class="input-group-label">
-								<span class="fa fa-search"></span>
+								<span class="fa-solid fa-magnifying-glass"></span>
 							</span>
 							<input class="quicksearch input-group-field" type="text" name="search" id="id_search" aria-label="Search by name, title, and research interests"  />
 						</div>
