@@ -13,7 +13,7 @@ get_header(); ?>
 	$department         = str_replace( ' ', '%20', $department_unclean );
 	$department         = str_replace( '&', '%26', $department );
 	$spring             = 'spring%202021';
-	$fall               = 'fall%202021';
+	$fall               = 'fall%202022';
 	$open               = 'open';
 	$approval           = 'approval%20required';
 	$closed             = 'closed';
