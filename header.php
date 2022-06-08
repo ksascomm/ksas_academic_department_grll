@@ -67,10 +67,10 @@
 				<div class="nav-shield">
 					<a href="<?php echo esc_url( network_site_url( '/' ) ); ?>" rel="home">
 						<div class="blue">
-							<img width="300" height="87" src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/assets/images/krieger.blue.svg" alt="KSAS Shield" loading="lazy">
+							<img width="300" height="87" src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/assets/images/krieger.blue.svg" alt="KSAS Shield" loading="eager">
 						</div>
 						<div class="white">
-							<img width="300" height="87" src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/assets/images/krieger.white.svg" alt="KSAS Shield">
+							<img width="300" height="87" src="<?php echo esc_url( get_template_directory_uri() ); ?>/dist/assets/images/krieger.white.svg" alt="KSAS Shield" loading="eager">
 						</div>
 					</a>
 				</div>
