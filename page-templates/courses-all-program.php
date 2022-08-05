@@ -14,20 +14,23 @@ get_header(); ?>
 	require get_template_directory() . '/library/Zebra_cURL.php';
 
 	// Set query string variables.
-	$theme_option       = flagship_sub_get_global_options();
-	$department_unclean = $theme_option['flagship_sub_isis_name'];
-	$department         = str_replace( ' ', '%20', $department_unclean );
-	$department         = str_replace( '&', '%26', $department );
-	$fall               = 'fall%202022';
-	$spring             = 'spring%202022';
-	$open               = 'open';
-	$approval           = 'approval%20required';
-	$closed             = 'closed';
-	$waitlist           = 'waitlist%20only';
-	$reserved_open      = 'reserved%20open';
-	$key                = '0jCaUO1bHwbG1sFEKQd3iXgBgxoDUOhR';
-	$program_slug       = get_the_program_slug( $post );
-	$subdepartment      = $program_slug;
+	$theme_option          = flagship_sub_get_global_options();
+	$department_unclean    = $theme_option['flagship_sub_isis_name'];
+	$department            = str_replace( ' ', '%20', $department_unclean );
+	$department            = str_replace( '&', '%26', $department );
+	$fall                  = 'fall%202022';
+	$spring                = 'spring%202022';
+	$open                  = 'open';
+	$approval              = 'approval%20required';
+	$closed                = 'closed';
+	$waitlist              = 'waitlist%20only';
+	$reserved_open         = 'reserved%20open';
+	$key                   = '0jCaUO1bHwbG1sFEKQd3iXgBgxoDUOhR';
+	$program_slug          = get_the_program_slug( $post );
+	$subdepartment_unclean = $program_slug;
+	$subdepartment         = str_replace( ' ', '%20', $subdepartment_unclean );
+	$subdepartment         = str_replace( '-', '%20', $subdepartment );
+	$subdepartment         = str_replace( '&', '%26', $subdepartment );
 
 	// Create first Zebra Curl class.
 	$course_curl = new Zebra_cURL();
@@ -108,7 +111,7 @@ get_header(); ?>
 			$dates               = $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[0]->{'Dates'};
 			$postag              = ' ';
 			$sectiondetails      = $result->body[0]->{'SectionDetails'}[0];
-			$tags                = [];
+			$tags                = array();
 
 			if ( isset( $sectiondetails->{'PosTags'} ) ) {
 				if ( ! empty( $sectiondetails->{'PosTags'} ) ) {
