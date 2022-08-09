@@ -95,7 +95,9 @@ get_header(); ?>
 						</p>
 					</div>
 				</div>
-					<?php if ( has_term( '', 'role' ) && ! has_term( 'job-market-candidate', 'role' ) ) : ?>
+					<?php
+					if ( ! empty( get_post_meta( $post->ID, 'ecpt_bio', true ) ) ) :
+						?>
 						<ul class="tabs margin10" data-tabs id="profile-tabs">
 						<?php if ( get_post_meta( $post->ID, 'ecpt_bio', true ) ) : ?>
 					<li class="tabs-title is-active"><a href="#bioTab">Biography</a></li>
