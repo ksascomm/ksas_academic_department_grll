@@ -1,9 +1,8 @@
 <header class="featured-hero program-home hide-for-print hide-for-small-only" role="banner" data-interchange="[<?php the_post_thumbnail_url( 'featured-small' ); ?>, small], [<?php the_post_thumbnail_url( 'featured-medium' ); ?>, medium], [<?php the_post_thumbnail_url( 'full' ); ?>, large], [<?php the_post_thumbnail_url( 'full' ); ?>, xlarge]" aria-label="Featured Image">
    
 	<figcaption class="orbit-caption" aria-hidden="true">
-		<h1><?php the_title(); ?>
+		<h1>
 		<?php wp_reset_postdata(); ?>
-		<br>
 			<small>
 				<?php if ( get_field( 'major' ) == 1 ) : ?>
 					<span class="degree major">Major</span>

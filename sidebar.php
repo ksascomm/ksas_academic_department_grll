@@ -45,7 +45,7 @@
 			</aside>
 		<?php endif; ?>
 
-	<?php if ( is_home() || is_single() && ! is_singular( array( 'studyfields', 'ai1ec_event', 'people' ) ) ) : ?>
+	<?php if ( is_home() || is_single() && ! is_singular( array( 'studyfields', 'people' ) ) ) : ?>
 		<aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation">
 			<div class="sidebar-menu" role="navigation">
 				<h1 class="sidebar-menu-title" id="sidebar-navigation">Also in <a href="<?php echo get_home_url(); ?>/about/" aria-label="Sidebar Menu: About">About</a></h1>
@@ -91,8 +91,8 @@
 								?>
 							<option>---<?php the_title(); ?></option> 
 								<?php
-						endwhile;
-endif;
+							endwhile;
+						endif;
 						?>
 						<?php
 						$jump_menu_query = new WP_Query(

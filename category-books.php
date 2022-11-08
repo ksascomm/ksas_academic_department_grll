@@ -32,7 +32,7 @@ endif;
 ?>
 <div class="main-container" id="page">
 	<div class="main-grid">
-		<main class="main-content">
+		<main class="main-content-full-width">
 			<h1 class="page-title"><?php echo $program_name; ?> Faculty Books</h1>
 			<?php
 				$faculty_book_query = new WP_Query(
@@ -52,7 +52,7 @@ endif;
 					while ( $faculty_book_query->have_posts() ) :
 						$faculty_book_query->the_post();
 						?>
-						<article class="faculty-book" aria-labelledby="post-<?php the_ID(); ?>">
+						<article <?php post_class( 'faculty-book' ); ?> aria-labelledby="post-<?php the_ID(); ?>">
 						<?php if ( has_post_thumbnail() ) { ?>
 							<?php
 							the_post_thumbnail(

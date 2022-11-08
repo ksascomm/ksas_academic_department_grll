@@ -36,7 +36,7 @@ get_header(); ?>
 	?>
 <div class="main-container" id="page">
 	<div class="main-grid">
-		<main class="main-content">
+		<main class="main-content-full-width">
 			<?php do_action( 'ksasacademic_before_content' ); ?>
 			<?php
 			while ( have_posts() ) :
@@ -146,7 +146,6 @@ endif;
 			</div>
 		</main>
 		<?php do_action( 'ksasacademic_after_content' ); ?>
-		<?php get_sidebar(); ?>
 	</div>
 </div>
 <?php

@@ -4,7 +4,8 @@ Template Name: SIS Courses (GRLL Program: Undergraduate)
 */
 get_header(); ?>
 <?php get_template_part( 'template-parts/featured-image' ); ?>
-<?php // Load Zebra Curl.
+<?php
+// Load Zebra Curl.
 	require get_template_directory() . '/library/Zebra_cURL.php';
 
 	// Set query string variables.
@@ -12,14 +13,14 @@ get_header(); ?>
 	$department_unclean = $theme_option['flagship_sub_isis_name'];
 	$department         = str_replace( ' ', '%20', $department_unclean );
 	$department         = str_replace( '&', '%26', $department );
-	$fall               = 'fall%202022';
+	$fall               = 'spring%202023';
 	$open               = 'open';
 	$approval           = 'approval%20required';
 	$closed             = 'closed';
 	$waitlist           = 'waitlist%20only';
 	$reserved_open      = 'reserved%20open';
 	$key                = '0jCaUO1bHwbG1sFEKQd3iXgBgxoDUOhR';
-	$program_slug       = get_the_program_slug($post);
+	$program_slug       = get_the_program_slug( $post );
 	$subdepartment      = $program_slug;
 
 	// Create first Zebra Curl class.
@@ -96,7 +97,7 @@ get_header(); ?>
 			$roomnumber          = $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[0]->{'Room'};
 			$postag              = ' ';
 			$sectiondetails      = $result->body[0]->{'SectionDetails'}[0];
-			$tags                = [];
+			$tags                = array();
 
 			if ( isset( $sectiondetails->{'PosTags'} ) ) {
 				if ( ! empty( $sectiondetails->{'PosTags'} ) ) {
@@ -116,16 +117,20 @@ get_header(); ?>
 			$output .= '<div class="reveal course-description" id="course-' . $clean_course_number . $section_number . $clean_term . '" aria-labelledby="' . $clean_term . $course_number . '-' . $section_number . '" data-reveal><h1 id="' . $clean_term . $course_number . '-' . $section_number . '">' . $title . '<br><small>' . $course_number . '&nbsp;(' . $section_number . ')</small></h1><p>' . $description . '<ul><li><strong>Credits:</strong> ' . $credits . '</li><li><strong>Level:</strong> ' . $course_level . ' </li><li><strong>Days/Times:</strong> ' . $meetings . ' </li><li><strong>Instructor:</strong> ' . $instructor . ' </li><li><strong>Room:</strong> ' . $room . '&nbsp;' . $roomnumber . '  </li><li><strong>Status:</strong> ' . $status . '</li><li><strong>Seats Available:</strong> ' . $seatsavailable . '</li><li><strong>PosTag(s):</strong> ' . $print_tags . '</li></ul></p><button class="close-button" data-close aria-label="Close reveal" type="button"><span aria-hidden="true">&times;</span></button></div>';
 		}
 	);
-?>	
+	?>
+		
 
 <div class="main-container" id="page">
 	<div class="main-grid">
-			<main class="main-content">
-					<?php while ( have_posts() ) : the_post(); ?>
+		<main class="main-content-full-width">
+					<?php
+					while ( have_posts() ) :
+						the_post();
+						?>
 							<?php get_template_part( 'template-parts/content', 'page' ); ?>
-					<?php endwhile;?>	
+					<?php endwhile; ?>	
 				<ul class="tabs" data-tabs id="courses-tabs">
-					<li class="tabs-title is-active"><a href="#Fall">Fall 2021</a></li>
+					<li class="tabs-title is-active"><a href="#Fall">Spring 2023</a></li>
 				</ul>
 				<div class="tabs-content course-listings" data-tabs-content="courses-tabs">
 					<div class="tabs-panel is-active" id="Fall">
@@ -149,8 +154,8 @@ get_header(); ?>
 					</div>
 				</div>
 			</main>
-			<?php get_sidebar(); ?>
 	</div>
 </div>
 
-<?php get_footer();
+<?php
+get_footer();

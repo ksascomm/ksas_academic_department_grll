@@ -26,18 +26,18 @@ $news_query_cond = $theme_option['flagship_sub_news_query_cond']; ?>
 		<h1 class="page-title"><?php echo $program_name . ' ' . $theme_option['flagship_sub_feed_name']; ?> Archive</h1>
 		<?php
 		while ( have_posts() ) :
-			the_post(); if ( 'post' == get_post_type() ) :
-				?>
-					<?php get_template_part( 'template-parts/content-news', get_post_format() ); ?>
+			the_post();
+					< ? php get_template_part( 'template-parts', get_post_format() );
+			?>
 					<?php
-		endif;
-endwhile;
+			endwhile;
 		?>
 			<?php
-			if ( function_exists( 'ksasacademic_pagination' ) ) :
+			if ( function_exists( 'ksasacademic_pagination' ) ) {
+				:
 				ksasacademic_pagination();
-				elseif ( is_paged() ) :
-					?>
+			} elseif ( is_paged() ) :
+				?>
 					<nav id="post-nav">
 						<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'ksasacademic' ) ); ?></div>
 						<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'ksasacademic' ) ); ?></div>

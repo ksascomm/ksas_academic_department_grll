@@ -23,7 +23,9 @@ get_header(); ?>
 					?>
 				<article aria-labelledby="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header class="article-header">
-					<h1 class="entry-title single-title" itemprop="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?></h1>
+					<h1 class="entry-title single-title" itemprop="headline" id="post-<?php the_ID(); ?>"><?php the_title(); ?> <?php if ( get_post_meta( $post->ID, 'ecpt_pronoun', true ) ) : ?>
+					<small>(<?php echo wp_kses_post( get_post_meta( $post->ID, 'ecpt_pronoun', true ) ); ?>)</small>
+				<?php endif; ?></h1>
 				</header>
 				<div class="grid-x grid-margin-x bio">
 					<?php if ( has_post_thumbnail() ) : ?>
@@ -178,20 +180,41 @@ get_header(); ?>
 						?>
 				</div>
 			</aside>
-			<?php if ( has_term( '', 'role' ) && ! is_single( 'earle-havens' ) ) : ?>
+			<?php if ( has_term( '', 'role' ) && ! has_term( 'graduate-student', 'role' ) ) : ?>
 			<aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation">
-				<div class="sidebar-menu <?php echo esc_html( $program_slug ); ?>">
-					<h1 class="sidebar-menu-title" id="sidebar-navigation">Also in <a href="<?php echo esc_url( site_url( '/' ) . $program_slug ); ?>" aria-label="<?php echo esc_html( $program_name ); ?> Program Menu Heading"><?php echo esc_html( $program_name ); ?> Program</a></h1>
-					<?php
-						wp_nav_menu(
+				<div class="sidebar-menu faculty-bio-jump" aria-labelledby="jump-menu">
+					<label for="jump">
+						<h1 id="jump-menu">View All Department Faculty Members</h1>
+					</label>
+					<select name="jump" id="jump" onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+						<?php
+						if ( have_posts() ) :
+							while ( have_posts() ) :
+								the_post();
+								?>
+							<option>---<?php the_title(); ?></option> 
+								<?php
+							endwhile;
+						endif;
+						?>
+						<?php
+						$jump_menu_query = new WP_Query(
 							array(
-								'menu_class' => 'nav',
-								'menu'       => $program_name,
-								'depth'      => 1,
-								'items_wrap' => '<ul class="%2$s" aria-label="Program Menu">%3$s</ul>',
+								'post_type'      => 'people',
+								'meta_key'       => 'ecpt_people_alpha',
+								'orderby'        => 'meta_value',
+								'order'          => 'ASC',
+								'posts_per_page' => 200,
 							)
 						);
-					?>
+						?>
+						<?php
+						while ( $jump_menu_query->have_posts() ) :
+							$jump_menu_query->the_post();
+							?>
+							<option value="<?php the_permalink(); ?>"><?php the_title(); ?></option>
+						<?php endwhile; ?>
+					</select>
 				</div>
 			</aside>
 			<?php endif; ?>

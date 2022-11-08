@@ -89,7 +89,7 @@ if ( $program_name == 'French' || $program_name == 'German' || $program_name == 
 			{
 				searchPanes: {
 					show: true,
-					preSelect: ['Fall 2021']
+					preSelect: ['Fall 2022']
 				},
 				targets: [5]
 			},

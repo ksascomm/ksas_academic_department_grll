@@ -19,7 +19,7 @@ get_header(); ?>
 	$department            = str_replace( ' ', '%20', $department_unclean );
 	$department            = str_replace( '&', '%26', $department );
 	$fall                  = 'fall%202022';
-	$spring                = 'spring%202022';
+	$spring                = 'spring%202023';
 	$open                  = 'open';
 	$approval              = 'approval%20required';
 	$closed                = 'closed';
@@ -135,7 +135,7 @@ get_header(); ?>
 
 <div class="main-container" id="page">
 	<div class="main-grid">
-			<main class="main-content">
+			<main class="main-content-full-width">
 				<?php
 				while ( have_posts() ) :
 					the_post();
@@ -162,7 +162,6 @@ get_header(); ?>
 					</table>
 				</div>
 			</main>
-			<?php get_sidebar(); ?>
 	</div>
 </div>
 
