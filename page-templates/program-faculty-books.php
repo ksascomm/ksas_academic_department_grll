@@ -16,7 +16,7 @@ $program_name = get_the_program_name( $post );
 ?>
 <div class="main-container" id="page">
 	<div class="main-grid">
-		<main class="main-content">
+		<main class="main-content-full-width">
 			<h1 class="page-title"><?php echo esc_html( $program_name ); ?> Faculty Books</h1>
 			<?php
 				$program_faculty_book_query = new WP_Query(
