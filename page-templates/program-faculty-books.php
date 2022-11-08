@@ -45,7 +45,6 @@ $program_name = get_the_program_name( $post );
 				endif;
 				?>
 		</main>
-		<?php get_sidebar(); ?>
 	</div>
 </div>
 <?php
