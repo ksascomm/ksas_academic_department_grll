@@ -166,7 +166,7 @@ get_header(); ?>
 		<div class="sidebar">
 			<aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation-people">
 				<div class="sidebar-menu">
-					<h1 class="sidebar-menu-title" id="sidebar-navigation-people">Also in <a href="<?php echo esc_url( get_home_url() ); ?>/people/" aria-label="Sidebar Menu: People Heading">Department People</a></h1>
+					<h1 class="sidebar-menu-title" id="sidebar-navigation-people">Also in <a href="<?php echo esc_url( get_home_url() ); ?>/people/">Department People</a></h1>
 					<?php
 						wp_nav_menu(
 							array(
