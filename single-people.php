@@ -45,9 +45,6 @@ get_header(); ?>
 						<?php if ( get_post_meta( $post->ID, 'ecpt_position', true ) ) : ?>
 							<h2><?php echo wp_kses_post( get_post_meta( $post->ID, 'ecpt_position', true ) ); ?></h2>
 						<?php endif; ?>
-						<?php if ( get_post_meta( $post->ID, 'ecpt_degrees', true ) ) : ?>
-								<h3><?php echo wp_kses_post( get_post_meta( $post->ID, 'ecpt_degrees', true ) ); ?></h3>
-						<?php endif; ?>
 						<p class="listing">
 							<span class="fa-regular fa-language"></span> Program: <?php echo esc_html( $program_name ); ?><br>
 							<?php
@@ -64,6 +61,9 @@ get_header(); ?>
 									<?php endif; ?>
 									<br>
 								<?php endif; ?>
+								<?php if ( get_post_meta( $post->ID, 'ecpt_leave', true ) ) : ?>
+									<span class="fa-solid fa-calendar-circle-exclamation" aria-hidden="true"></span> <strong>On Leave: <?php echo esc_html( get_post_meta( $post->ID, 'ecpt_leave', true ) ); ?></strong><br>
+								<?php endif; ?>
 								<?php if ( get_field( 'ecpt_cv' ) ) : ?>
 								<span class="fa-solid fa-file-pdf" aria-hidden="true"></span> <a href="<?php the_field( 'ecpt_cv' ); ?>">Curriculum Vitae</a><br>
 								<?php endif; ?>
@@ -76,9 +76,23 @@ get_header(); ?>
 								<?php if ( get_post_meta( $post->ID, 'ecpt_office', true ) ) : ?>
 								<span class="fa-solid fa-location-dot" aria-hidden="true"></span> <?php echo esc_html( get_post_meta( $post->ID, 'ecpt_office', true ) ); ?><br>
 								<?php endif; ?>
-								<?php if ( get_post_meta( $post->ID, 'ecpt_hours', true ) ) : ?>
-								<span class="fa-solid fa-calendar-check" aria-hidden="true"></span> <?php echo esc_html( get_post_meta( $post->ID, 'ecpt_hours', true ) ); ?><br>
+								<!-- Do not display Office Hours if Person is On Leave -->
+								<?php
+								if ( empty( get_post_meta( $post->ID, 'ecpt_leave', true ) ) ) :
+									?>
+									<?php if ( get_post_meta( $post->ID, 'ecpt_hours', true ) ) : ?>
+									<span class="fa-solid fa-door-open" aria-hidden="true"></span> 
+										<?php if ( get_post_meta( $post->ID, 'ecpt_hours_link', true ) ) : ?>
+											<a href="<?php echo esc_html( get_post_meta( $post->ID, 'ecpt_hours_link', true ) ); ?>">
+												<?php echo esc_html( get_post_meta( $post->ID, 'ecpt_hours', true ) ); ?>
+											</a>
+										<?php else : ?>
+											<?php echo esc_html( get_post_meta( $post->ID, 'ecpt_hours', true ) ); ?>
+										<?php endif; ?>
+										<br>
+									<?php endif; ?>
 								<?php endif; ?>
+								<!-- End On Leave Conditional -->
 								<?php if ( get_post_meta( $post->ID, 'ecpt_phone', true ) ) : ?>
 								<span class="fa-solid fa-phone-office" aria-hidden="true"></span> <?php echo esc_html( get_post_meta( $post->ID, 'ecpt_phone', true ) ); ?><br>
 								<?php endif; ?>
@@ -95,6 +109,12 @@ get_header(); ?>
 								<span class="fa-brands fa-twitter"></span> <a href="https://twitter.com/<?php echo esc_html( get_post_meta( $post->ID, 'ecpt_twitter', true ) ); ?>" target="_blank"> @<?php echo esc_html( get_post_meta( $post->ID, 'ecpt_twitter', true ) ); ?></a>
 								<?php endif; ?>
 						</p>
+							<?php if ( get_post_meta( $post->ID, 'ecpt_expertise', true ) ) : ?>
+								<p class="capitalize"><strong>Research Interests:&nbsp;</strong><?php echo esc_html( get_post_meta( $post->ID, 'ecpt_expertise', true ) ); ?></p>
+							<?php endif; ?>
+							<?php if ( get_post_meta( $post->ID, 'ecpt_degrees', true ) ) : ?>
+								<p><strong>Education:</strong> <?php echo wp_kses_post( get_post_meta( $post->ID, 'ecpt_degrees', true ) ); ?></p>
+							<?php endif; ?>
 					</div>
 				</div>
 					<?php
