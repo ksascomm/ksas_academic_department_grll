@@ -300,18 +300,18 @@ function custom_ksasacademic_mll_page_title( $title ) {
 			$title       = single_cat_title( '', false ) . ' Archive Page ' . $page_number . ' | ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 			return $title;
 		} else {
-		$title = single_cat_title( '', false ) . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
-		return $title;
+			$title = single_cat_title( '', false ) . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+			return $title;
 		}
 	} elseif ( is_single() ) {
-		$title = get_the_title() . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+		$title = the_title_attribute( 'echo=0' ) . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 		return $title;
 	} elseif ( is_page() && ! is_page_template( 'page-templates/program-homepage.php' ) ) {
 		if ( ! empty( $program_name ) ) :
-			$title = get_the_title() . ' | ' . $program_name . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+			$title = the_title_attribute( 'echo=0' ) . ' | ' . $program_name . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 			return $title;
 		else :
-			$title = get_the_title() . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
+			$title = the_title_attribute( 'echo=0' ) . ' | ' . get_bloginfo( 'description' ) . ' ' . get_bloginfo( 'name' ) . ' | Johns Hopkins University';
 			return $title;
 		endif;
 	} elseif ( is_page() && is_page_template( 'page-templates/program-homepage.php' ) ) {
