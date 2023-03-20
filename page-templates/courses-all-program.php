@@ -41,7 +41,7 @@ get_header(); ?>
 		)
 	);
 	// Cache for 14 days.
-	$course_curl->cache( get_stylesheet_directory() . '/sis-cache/', 1209600 );
+	$course_curl->cache( get_template_directory() . '/sis-cache/' . $subdepartment, 1209600 );
 
 	// Create API Url calls.
 	$courses_fall_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $spring . '&Term=' . $fall . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment . '&status=' . $open . '&status=' . $approval . '&status=' . $waitlist . '&status=' . $reserved_open;
