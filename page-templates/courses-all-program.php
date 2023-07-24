@@ -18,7 +18,7 @@ get_header(); ?>
 	$department_unclean    = $theme_option['flagship_sub_isis_name'];
 	$department            = str_replace( ' ', '%20', $department_unclean );
 	$department            = str_replace( '&', '%26', $department );
-	$fall                  = 'fall%202022';
+	$fall                  = 'fall%202023';
 	$spring                = 'spring%202023';
 	$open                  = 'open';
 	$approval              = 'approval%20required';
