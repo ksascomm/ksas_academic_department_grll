@@ -81,13 +81,13 @@
 					<div class="top-bar-title">
 						<h1 itemprop="headline">
 							<?php
-								if ( $program_name == 'French' || $program_name == 'German' || $program_name == 'Hebrew and Yiddish' || $program_name == 'Italian' || $program_name == 'Portuguese' || $program_name == 'Spanish' ) :
-					?>
+							if ( $program_name == 'French' || $program_name == 'German' || $program_name == 'Hebrew and Yiddish' || $program_name == 'Italian' || $program_name == 'Portuguese' || $program_name == 'Spanish' || $program_name == 'Spanish and Portuguese' ) :
+								?>
 					<a id="dept-info" href="<?php echo esc_url( site_url() ); ?>">
 						<small class="hide-for-small-only">Department of <?php bloginfo( 'title' ); ?></small>
 					</a>
 					<a href="<?php echo esc_url( site_url( '/' ) . $program_slug . '/' ); ?>">
-						<?php echo esc_html( $program_name . ' Program' ); ?>
+								<?php echo esc_html( $program_name . ' Program' ); ?>
 					</a>
 					<?php else : ?>
 						<a id="dept-info" href="<?php echo esc_url( site_url() ); ?>">
@@ -105,25 +105,25 @@
 		<nav class="top-bar main-navigation hide-for-print" aria-label="Main Menu">
 			<div class="top-bar-left">
 			<?php
-				if ( $program_name == 'French' || $program_name == 'German' || $program_name == 'Hebrew and Yiddish' || $program_name == 'Italian' || $program_name == 'Portuguese' || $program_name == 'Spanish' ) :
-					?>
-					<?php
-					wp_nav_menu(
-						array(
-							'container'      => false,
-							'menu_class'     => 'dropdown menu',
-							'items_wrap'     => '<ul id="%1$s" class="%2$s desktop-menu" data-dropdown-menu aria-label="Primary Navigation">%3$s</ul>',
-							'theme_location' => 'top-bar-r',
-							'depth'          => 2,
-							'fallback_cb'    => false,
-							'menu'           => $program_name,
-							'walker'         => new Ksasacademic_Top_Bar_Walker(),
-						)
-					);
-					?>
-				<?php else: ?> 
+			if ( $program_name == 'French' || $program_name == 'German' || $program_name == 'Hebrew and Yiddish' || $program_name == 'Italian' || $program_name == 'Portuguese' || $program_name == 'Spanish' || $program_name == 'Spanish and Portuguese' ) :
+				?>
+				<?php
+				wp_nav_menu(
+					array(
+						'container'      => false,
+						'menu_class'     => 'dropdown menu',
+						'items_wrap'     => '<ul id="%1$s" class="%2$s desktop-menu" data-dropdown-menu aria-label="Primary Navigation">%3$s</ul>',
+						'theme_location' => 'top-bar-r',
+						'depth'          => 2,
+						'fallback_cb'    => false,
+						'menu'           => $program_name,
+						'walker'         => new Ksasacademic_Top_Bar_Walker(),
+					)
+				);
+				?>
+				<?php else : ?> 
 					<!-- MLL DEPARTMENT MENU -->
-				<?php ksasacademic_top_bar_r(); ?>
+					<?php ksasacademic_top_bar_r(); ?>
 				<?php endif; ?>
 			</div>
 			<div class="top-bar-right hide-for-small-only">
