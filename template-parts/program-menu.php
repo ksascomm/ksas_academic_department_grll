@@ -5,12 +5,13 @@
  * @package KSASAcademicDepartment
  * @since KSASAcademicDepartment 1.0.0
  */
+
 ?>
 
 <?php
-	$program_slug = get_the_program_slug( $post );
-	$program_name = get_the_program_name( $post );
-	if ( $program_name == 'French' || $program_name == 'German' || $program_name == 'Hebrew and Yiddish' || $program_name == 'Italian' || $program_name == 'Portuguese' || $program_name == 'Spanish' ) :
+$program_slug = get_the_program_slug( $post );
+$program_name = get_the_program_name( $post );
+if ( $program_name == 'French' || $program_name == 'German' || $program_name == 'Hebrew and Yiddish' || $program_name == 'Italian' || $program_name == 'Portuguese' || $program_name == 'Spanish' || $program_name == 'Spanish and Portuguese' ) :
 		wp_nav_menu(
 			array(
 				'container'      => false,
@@ -23,4 +24,5 @@
 				'walker'         => new Ksasacademic_Top_Bar_Walker(),
 			)
 		);
+endif;
 ?>

@@ -17,7 +17,7 @@ get_header(); ?>
 	<?php
 	$program_slug = get_the_program_slug( $post );
 	$program_name = get_the_program_name( $post );
-	if ( $program_name == 'French' || $program_name == 'German' || $program_name == 'Hebrew and Yiddish' || $program_name == 'Italian' || $program_name == 'Portuguese' || $program_name == 'Spanish' ) :
+	if ( $program_name == 'French' || $program_name == 'German' || $program_name == 'Hebrew and Yiddish' || $program_name == 'Italian' || $program_name == 'Portuguese' || $program_name == 'Spanish' || $program_name == 'Spanish and Portuguese' ) :
 		?>
 		<main class="main-content-full-width">
 		<?php else : ?>
@@ -42,7 +42,7 @@ get_header(); ?>
 			<?php endif; ?>
 		</main>
 		<?php
-		if ( $program_name == 'French' || $program_name == 'German' || $program_name == 'Hebrew and Yiddish' || $program_name == 'Italian' || $program_name == 'Portuguese' || $program_name == 'Spanish' ) :
+		if ( $program_name == 'French' || $program_name == 'German' || $program_name == 'Hebrew and Yiddish' || $program_name == 'Italian' || $program_name == 'Portuguese' || $program_name == 'Spanish' || $program_name == 'Spanish and Portuguese' ) :
 			?>
 			<?php
 			if ( have_posts() && get_post_meta( $post->ID, 'ecpt_page_sidebar', true ) ) :
