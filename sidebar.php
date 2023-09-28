@@ -79,9 +79,9 @@
 				?>
 			</div>
 			<?php if ( has_term( '', 'role' ) && ! has_term( 'job-market-candidate', 'role' ) ) : ?>			
-				<div class="sidebar-menu faculty-bio-jump" aria-labelledby="jump-menu">
+				<div class="sidebar-menu faculty-bio-jump">
 					<label for="jump">
-						<h1 id="jump-menu">Jump to Faculty Member</h1>
+						<h1>Jump to Faculty Member</h1>
 					</label>
 					<select name="jump" id="jump" onchange="window.open(this.options[this.selectedIndex].value,'_top')">
 						<?php
