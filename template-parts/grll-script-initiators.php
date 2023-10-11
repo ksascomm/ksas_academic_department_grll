@@ -74,42 +74,50 @@ if ( $program_name == 'French' || $program_name == 'German' || $program_name == 
 </script>
 <?php endif; ?>
 
-<?php if ( is_page_template( 'page-templates/courses-all-program.php' ) ) : ?>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"/>
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchpanes/1.3.0/css/searchPanes.dataTables.min.css"/>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/searchpanes/2.1.1/js/dataTables.searchPanes.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
-	<script>
-	jQuery(document).ready( function($) {
+<?php if ( is_page_template( 'page-templates/courses-all-program.php' ) || is_page_template( 'page-templates/courses-program-select.php' ) ) :
+
+wp_enqueue_style( 'data-tables', '//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css', array(), true );
+wp_enqueue_style( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.1.1/css/searchPanes.dataTables.min.css', array(), true );
+
+wp_enqueue_script( 'data-tables', '//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js', array(), '1.13.4', false );
+wp_script_add_data( 'data-tables', 'defer', true );
+
+wp_enqueue_script( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.1.1/js/dataTables.searchPanes.min.js', array(), '2.1.1', false );
+wp_script_add_data( 'data-tables-searchpanes', 'defer', true );
+
+wp_enqueue_script( 'data-tables-select', '//cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js', array(), '1.4.0', false );
+wp_script_add_data( 'data-tables-select', 'defer', true );
+?>
+
+<script>
+jQuery(document).ready( function($) {
 	$('a[aria-selected="true"]').on( 'shown.bs.tab', function (e) {
 		$.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
 	} );
 
 	$('table.course-table').DataTable( {
 		"order": [[ 0, "asc" ]],
-			"lengthMenu": [[15, 30, -1],[15, 30, "All"]],
-			"dom": 'Plfrtip',
-			"language": {
-				"emptyTable": "Courses have a status of Closed, or are unavailable at this time. Please try again later."
+		"lengthMenu": [[15, 30, -1],[15, 30, "All"]],
+		"dom": 'Plfrtip',
+		"language": {
+			"emptyTable": "Courses have a status of Closed, or are unavailable at this time. Please try again later."
+		},
+		searchPanes: {
+				preSelect: [{
+					rows:['Fall 2023'],
+					column: 5
+				}],
 			},
+		columnDefs: [
+		{
+			//This hides all but Term pane from search/filter
 			searchPanes: {
-					preSelect: [{
-						rows:['Fall 2023'],
-						column: 5
-					}],
-				},
-			columnDefs: [
-			{
-				//This hides all but Term pane from search/filter
-				searchPanes: {
-					show: false
-				},
-				targets: [0,1,2,3,4,6]
-			}
-		]
-		} );
+				show: false
+			},
+			targets: [0,1,2,3,4,6]
+		}
+	]
 	} );
-	</script>
-<?php endif;
-?>
+} );
+</script>
+<?php endif; ?>
