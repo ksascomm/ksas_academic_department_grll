@@ -334,10 +334,10 @@ add_filter( 'pre_get_document_title', 'custom_ksasacademic_mll_page_title', 9999
 add_action( 'pre_get_posts', 'tl_project_tax_page' );
 
 /**
- * Show 15 Program News posts on Program News Archive Page
+ * Show all Program News posts on Program News Archive Page
  */
 function tl_project_tax_page( $query ) {
 	if ( ! is_admin() && $query->is_main_query() && is_tax( 'program' ) ) {
-			$query->set( 'posts_per_page', '15' );
+			$query->set( 'posts_per_page', '-1' );
 	}
 }
