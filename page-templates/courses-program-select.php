@@ -14,24 +14,24 @@ get_header(); ?>
 	require get_template_directory() . '/library/Zebra_cURL.php';
 
 	// Set query string variables.
-	$theme_option          = flagship_sub_get_global_options();
-	$department_unclean    = $theme_option['flagship_sub_isis_name'];
-	$department            = str_replace( ' ', '%20', $department_unclean );
-	$department            = str_replace( '&', '%26', $department );
-	$fall                  = 'fall%202023';
-	$spring                = 'spring%202023';
-	$open                  = 'open';
-	$approval              = 'approval%20required';
-	$closed                = 'closed';
-	$waitlist              = 'waitlist%20only';
-	$reserved_open         = 'reserved%20open';
-	$key                   = '0jCaUO1bHwbG1sFEKQd3iXgBgxoDUOhR';
-	$program_slug          = get_the_program_slug( $post );
-	$subdepartment_select  = get_field( 'program_course_select' );
+	$theme_option                 = flagship_sub_get_global_options();
+	$department_unclean           = $theme_option['flagship_sub_isis_name'];
+	$department                   = str_replace( ' ', '%20', $department_unclean );
+	$department                   = str_replace( '&', '%26', $department );
+	$fall                         = 'fall%202023';
+	$spring                       = 'spring%202024';
+	$open                         = 'open';
+	$approval                     = 'approval%20required';
+	$closed                       = 'closed';
+	$waitlist                     = 'waitlist%20only';
+	$reserved_open                = 'reserved%20open';
+	$key                          = '0jCaUO1bHwbG1sFEKQd3iXgBgxoDUOhR';
+	$program_slug                 = get_the_program_slug( $post );
+	$subdepartment_select         = get_field( 'program_course_select' );
 	$subdepartment_select_unclean = $subdepartment_select->name;
-	$subdepartment         = str_replace( ' ', '%20', $subdepartment_select_unclean );
-	$subdepartment         = str_replace( '-', '%20', $subdepartment );
-	$subdepartment         = str_replace( '&', '%26', $subdepartment );
+	$subdepartment                = str_replace( ' ', '%20', $subdepartment_select_unclean );
+	$subdepartment                = str_replace( '-', '%20', $subdepartment );
+	$subdepartment                = str_replace( '&', '%26', $subdepartment );
 
 	// Create first Zebra Curl class.
 	$course_curl = new Zebra_cURL();
@@ -46,7 +46,7 @@ get_header(); ?>
 
 	// Create API Url calls.
 	$courses_fall_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $spring . '&Term=' . $fall . '&Department=AS%20' . $department . '&SubDepartment=' . $subdepartment . '&status=' . $open . '&status=' . $approval . '&status=' . $waitlist . '&status=' . $reserved_open;
-	
+
 	$course_data = array();
 	$output      = '';
 
