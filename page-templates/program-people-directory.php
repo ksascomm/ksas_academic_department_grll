@@ -43,14 +43,13 @@ get_header(); ?>
 				the_post();
 				?>
 			<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-				<header aria-label="<?php the_title(); ?>">
+				<header>
 					<h1 class="entry-title"><?php echo $program_name; ?> Program <?php the_title(); ?> Directory</h1>
 				</header>
 				<?php do_action( 'ksasacademic_page_before_entry_content' ); ?>
 				<div class="entry-content">
 					<?php the_content(); ?>
 					<?php $theme_option = flagship_sub_get_global_options(); ?>
-					
 				</div>
 			</article>
 			<?php endwhile; ?>

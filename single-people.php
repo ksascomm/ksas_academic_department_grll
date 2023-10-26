@@ -202,7 +202,7 @@ get_header(); ?>
 			</aside>
 			<?php if ( has_term( '', 'role' ) && ! has_term( 'graduate-student', 'role' ) ) : ?>
 			<aside class="sidebar-menu-area" aria-labelledby="sidebar-navigation">
-				<div class="sidebar-menu faculty-bio-jump" aria-labelledby="jump-menu">
+				<div class="sidebar-menu faculty-bio-jump">
 					<label for="jump">
 						<h1 id="jump-menu">View All Department Faculty Members</h1>
 					</label>

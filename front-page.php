@@ -61,7 +61,7 @@ get_header(); ?>
 	if ( $hero_query->have_posts() ) :
 		?>
 
-	<header class="hero" role="banner" aria-label="Explore the Krieger School Slider">
+	<header class="hero" role="banner">
 	<div class="full-screen-image show-for-large">
 
 		<?php
@@ -157,7 +157,7 @@ get_header(); ?>
 				}
 				if ( $news_query->have_posts() ) :
 					?>
-				<header class="news-title" aria-label="Site Feed">
+				<header class="news-title">
 					<h2><?php echo esc_html( $theme_option['flagship_sub_feed_name'] ); ?></h2>
 				</header>
 
@@ -180,7 +180,7 @@ get_header(); ?>
 			$hub_query_cond = $theme_option['flagship_sub_hub_cond'];
 			if ( $hub_query_cond === 1 ) :
 				?>
-					<header class="hub-title" aria-label="Hub Feed">
+					<header class="hub-title">
 						<h2>Related News from <a href="https://hub.jhu.edu/" aria-label="hub website">The Hub</a></h2>
 					</header>
 					<?php
